@@ -3,7 +3,7 @@
 <style>
 
 body {
-  background: #FFF;
+  background: #ADEBEB;
   position: relative;
   text-align: center;
 }
@@ -16,7 +16,7 @@ body {
 
 .orbit {
   fill: none;
-  stroke: #ccc;
+  stroke: #222;
   stroke-dasharray: 1,3;
 }
 
@@ -101,25 +101,36 @@ d3.csv("planets.csv", type, function(error, planets) {
       .style("width", function(d) { return d.radius * 2 + "px"; })
       .style("height", function(d) { return d.radius * 2 + "px"; });
 
-  system.append("svg")
+  var orbitSpace = system.append("svg")
       .attr("class", "orbit") // this governs the orbit visual
       .attr("width", function(d) { return d.radius * 2; })
-      .attr("height", function(d) { return d.radius * 2; })
-    .append("g")
-      .attr("transform", function(d) { return "translate(" + d.radius + "," + d.radius + ")"; })
+      .attr("height", function(d) { return d.radius * 2; });
+    
+  var orbitCircles = orbitSpace.append("g")
+    .attr("transform", function(d) { return "translate(" + d.radius + "," + d.radius + ")"; })
     .selectAll("circle")
       .data(function(d) { return d.values; })
-    .enter().append("circle")
-      .attr("r", function(d) { return x(d.semimajor_axis); })
+    .enter();
 
-  var line = d3.select("body").selectAll(".system").append("svg") 
-    .append("line")
+  orbitCircles.append("circle")
+      .attr("r", function(d) { return x(d.semimajor_axis); });
+
+  orbitCircles.append("line")
       .attr("x1", 5)
       .attr("y1", 5)
       .attr("x2", 50)
       .attr("y2", 50)
       .attr("stroke-width", 2)
-      .attr("stroke", "blue");
+      .attr("stroke", "black");
+
+  // var line = d3.select("body").selectAll(".system").append("svg") 
+  //   .append("line")
+      // .attr("x1", 5)
+      // .attr("y1", 5)
+      // .attr("x2", 50)
+      // .attr("y2", 50)
+      // .attr("stroke-width", 2)
+      // .attr("stroke", "blue");
 
   system.selectAll(".planet")
       .data(function(d) { return d.values; })
