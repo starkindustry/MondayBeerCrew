@@ -81,11 +81,12 @@ var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
     : "";
 
 d3.csv("planets.csv", type, function(error, planets) {
-  var systems = d3.nest()
+  var systems = d3.nest() // id is in order after .nest()
       .key(function(d) { return d.id; })
       .entries(planets);
 
   systems.forEach(function(s) {
+    console.log(s.key);
     s.values.forEach(function(p) { p.system = s; });
     s.radius = d3.max(s.values, function(p) { return x(p.semimajor_axis) + r(p.planet_radius); }) + padding;
   });
