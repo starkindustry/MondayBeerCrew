@@ -97,7 +97,7 @@ d3.csv("planets.csv", type, function(error, planets) {
   var system = d3.select("body").selectAll(".system")
       .data(systems)
     .enter().append("div")
-      .attr("depend", function(d) { return d.key; })
+      .attr("id", function(d) { return "name-" + d.key; })
       .attr("class", "system")
       .style("width", function(d) { return d.radius * 2 + "px"; })
       .style("height", function(d) { return d.radius * 3 + "px"; });
@@ -116,19 +116,75 @@ d3.csv("planets.csv", type, function(error, planets) {
   orbitCircles.append("circle")
       .attr("r", function(d) { return x(d.semimajor_axis); });
 
-  orbitCircles.append("line")
-      .attr("x1", 5)
-      .attr("y1", 5)
-      .attr("x2", 50)
-      .attr("y2", 50)
-      .attr("stroke-width", 2)
-      .attr("stroke", "black");
+  var sysDiv = system.selectAll("div");
+  
+  sysDiv.forEach(function(s){
+    var dependValue = s.parentNode.getAttribute("id");
+    if (dependValue == "name-1") {
+      var temp = s.parentNode;
+      var pos = temp.getBoundingClientRect();
 
-  var divs = d3.select("body").selectAll("div");
+      var top = pos.top;
+      var left = pos.left;
+      console.log("top " + pos.top);
+      console.log("right " + pos.right);
+      console.log("bottom " + pos.bottom);
+      console.log("left " + pos.left);
 
-  divs[0].forEach(function(div) {
-    console.log(div.getAttribute("depend"));
+      // USE THIS WHEN IMPLEMENTING
+      var coords = getOffsetRect(temp);   // takes scrolling into account
+
+      drawDepLine(s, top, left);
+    }
+
   });
+
+  function drawDepLine(sys, top, left) {
+    d3.select("#name-42")
+    .append("svg")
+      .attr("class", "line")
+      .attr("width", left)
+      .attr("height", top)
+    .append("line")
+      .attr("x1", 0)
+      .attr("y1", 0)
+      .attr("x2", left)
+      .attr("y2", top)
+      .attr("stroke-width", 1)
+      .attr("stroke", "black")
+  };
+
+  // from http://javascript.info/tutorial/coordinates
+  function getOffsetRect(elem) {
+    // (1)
+    var box = elem.getBoundingClientRect();
+    
+    var body = document.body;
+    var docElem = document.documentElement;
+    
+    // (2)
+    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+    
+    // (3)
+    var clientTop = docElem.clientTop || body.clientTop || 0;
+    var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+    
+    // (4)
+    var top  = box.top +  scrollTop - clientTop;
+    var left = box.left + scrollLeft - clientLeft;
+    
+    return { top: Math.round(top), left: Math.round(left) }
+};
+
+  // var divs = d3.select("body").selectAll("div");
+
+  // divs[0].forEach(function(div) {
+  //   console.log(div.getAttribute("depend"));
+  // });
+
+  // try to select a single system based on "depend"
+  
 
   system.selectAll(".planet")
       .data(function(d) { return d.values; })

@@ -1,0 +1,10 @@
+problems with drawing lines:
+
+extending SVG element for orbit so that line can draw to other orbits
+	- each orbit is an svg element
+
+Solutions? 
+- have background svg to make a coordinate system, draw lines in background?
+	Problems: May have problems with overlapping elements...could make this coordinate svg on top of everything?
+- adjust orbit SVGs so that they reach other orbits
+******- have separate SVG for lines
