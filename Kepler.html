@@ -140,13 +140,18 @@ d3.csv("planets.csv", type, function(error, planets) {
   });
 
   function drawDepLine(sys, top, left) {
-    d3.select(".orbit").append("line")
-      .attr("x1", 5)
-      .attr("y1", 5)
+    d3.select(".system")
+    .append("svg")
+      .attr("class", "line")
+      .attr("width", left)
+      .attr("height", top)
+    .append("line")
+      .attr("x1", 0)
+      .attr("y1", 0)
       .attr("x2", left)
       .attr("y2", top)
-      .attr("stroke-width", 2)
-      .attr("stroke", "black");
+      .attr("stroke-width", 1)
+      .attr("stroke", "black")
   };
 
   // from http://javascript.info/tutorial/coordinates
