@@ -30,7 +30,19 @@ public class XMLParser {
 			for (int i = 0; i < classes.getLength(); i++) {
 
 				Node currClass = classes.item(i);
-
+				
+				Node parrentNode = currClass.getParentNode();
+				
+				//Go as far back as needed to get to package nodes
+				while(!parrentNode.getNodeName().equals("package"))
+					parrentNode = parrentNode.getParentNode();
+				
+				String packageName = "";
+				if (parrentNode.getNodeType() == Node.ELEMENT_NODE){
+					Element parElement = (Element) parrentNode;
+					packageName = parElement.getElementsByTagName("name").item(0).getTextContent();
+				}
+							
 				if (currClass.getNodeType() == Node.ELEMENT_NODE) {
 					Element classElement = (Element) currClass;
 					
@@ -48,7 +60,7 @@ public class XMLParser {
 								&& !dep.contains(".event.")) 	// Do not include event related dependencies
 							outbounds.add(dep);
 					}					
-					Klass theClass = new Klass(className, outbounds);
+					Klass theClass = new Klass(className, packageName, outbounds);
 					classList.add(theClass);
 				}
 			}
@@ -65,6 +77,7 @@ public class XMLParser {
 		System.out.println("--------------------------------");
 		for (int i = 0; i < classList.size(); i++){
 			System.out.println((i+1) + ". " + classList.get(i).getName());
+			System.out.println("Package name: " + classList.get(i).getPachageName());
 			System.out.println("Dependencies: ");
 			List<String> deps = classList.get(i).getOutDependencies();
 			for (String s : deps)

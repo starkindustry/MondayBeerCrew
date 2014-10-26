@@ -3,13 +3,13 @@ import java.util.List;
 
 public class Klass {
 	private String name;
-//	private String packageName;
+	private String packageName;
 //	private List<String> inDependencies;
 	private List<String> outDependencies;
 	
-	public Klass(String name, List<String> out){
+	public Klass(String name, String packageName, List<String> out){
 		this.name = name;
-//		this.packageName = packageName;
+		this.packageName = packageName;
 //		this.inDependencies = in;
 		this.outDependencies = out;
 	}
@@ -18,9 +18,9 @@ public class Klass {
 		return this.name;
 	}
 	
-//	public String getPachageName(){
-//		return this.packageName;
-//	}
+	public String getPachageName(){
+		return this.packageName;
+	}
 	
 //	public List<String> getInDependencies(){
 //		return this.inDependencies;
