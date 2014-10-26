@@ -72,7 +72,7 @@ public class XMLParser {
 		System.out.println("--------------------------------");
 		for (int i = 0; i < classList.size(); i++){
 			System.out.println((i+1) + ". " + classList.get(i).getName());
-			System.out.println("Package name: " + classList.get(i).getPachageName());
+			System.out.println("Package name: " + classList.get(i).getPackageName());
 			System.out.println("Dependencies: ");
 			List<String> deps = classList.get(i).getOutDependencies();
 			for (String s : deps)

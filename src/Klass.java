@@ -18,7 +18,7 @@ public class Klass {
 		return this.name;
 	}
 	
-	public String getPachageName(){
+	public String getPackageName(){
 		return this.packageName;
 	}
 	
