@@ -78,6 +78,8 @@ var planetRadii = [{ "radius": 10, "period": 3.5},
 var data = [{ "orbit_x_axis": 230, "orbit_y_axis": 200, "orbit_radius": 100, "planet_radius": 10, "period": 13.5, "planet_top": 130, "planet_left": 140, "translate_top": 70, "translate_left": 90 },
             { "orbit_x_axis": 680, "orbit_y_axis": 200, "orbit_radius": 50, "planet_radius": 5, "period": 16, "planet_top": 170, "planet_left": 630, "translate_top": 30, "translate_left": 50 }]
 
+var line_data = [{ "x1": 230, "y1": 200, "x2": 680, "y2": 200, "c1_radius": 100, "c2_radius": 50}];
+
 // Detect the appropriate vendor prefix.
 var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
     : "-moz-transform" in document.body.style ? "-moz-"
@@ -89,16 +91,38 @@ var system = d3.select("body")
       .style("width", 1000 + "px")
       .style("height", 1000 + "px");
 
-var orbit = system.append("svg")
+var orbit_svg = system.append("svg")
       .attr("class", "orbit")
       .attr("width", function(d) { return 1000; })
-      .attr("height", function(d) { return 1000; })
-      .append("g")
+      .attr("height", function(d) { return 1000; });
+
+orbit_svg.append("g")
       .selectAll("circle")
       .data(jsonCircles)
       .enter().append("circle")
       .attr("class", "circle")
-      .attr("r", function(d) { return d.radius });
+      .attr("cx", function (d) { return d.x_axis; })
+      .attr("cy", function (d) { return d.y_axis; })
+      .attr("r", function (d) { return d.radius; })
+
+      // mockup for mouseover circles to make line visible
+      .on("mouseover", function(d) {
+          d3.select(".test_line").style("opacity", 0.9);
+      })
+      .on("mouseout", function(d) {
+          d3.select(".test_line").style("opacity", 0);
+      });;
+
+orbit_svg.append("svg:line")
+    .data(line_data)
+    .style("opacity", 0)
+    .attr("class", "test_line")
+    .attr("x1", function (d) { return d.x1; })
+    .attr("y1", function (d) { return d.y1 - d.c1_radius; })
+    .attr("x2", function (d) { return d.x2; })
+    .attr("y2", function (d) { return d.y2 - d.c2_radius; })
+    .attr("stroke-width", 1)
+    .attr("stroke", "white");
 
 system.selectAll(".planet")
       .data(data)
@@ -114,9 +138,9 @@ system.selectAll(".planet")
       .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
       .attr("r", function(d) { return d.planet_radius; });
 
-var circleAttributes = orbit
-      .attr("cx", function (d) { return d.x_axis; })
-      .attr("cy", function (d) { return d.y_axis; })
-      .attr("r", function (d) { return d.radius; });
+// var circleAttributes = orbit_svg
+//       .attr("cx", function (d) { return d.x_axis; })
+//       .attr("cy", function (d) { return d.y_axis; })
+//       .attr("r", function (d) { return d.radius; });
 
 </script>
