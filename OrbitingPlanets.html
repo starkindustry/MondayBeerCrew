@@ -27,8 +27,6 @@ body {
 
 .planet {
   position: absolute;
-  top: 130px;
-  left: 125px;
   -moz-animation-name: rotate;
   -moz-animation-iteration-count: infinite;
   -moz-animation-timing-function: linear;
@@ -77,8 +75,8 @@ var jsonCircles = [{ "x_axis": 230, "y_axis": 200, "radius": 100},
 var planetRadii = [{ "radius": 10, "period": 3.5},
                    { "radius": 5,  "period": 6}];
 
-var data = [{ "orbit_x_axis": 230, "orbit_y_axis": 200, "orbit_radius": 100, "planet_radius": 10, "period": 3.5 },
-            { "orbit_x_axis": 680, "orbit_y_axis": 200, "orbit_radius": 50, "planet_radius": 5, "period": 6 }]
+var data = [{ "orbit_x_axis": 230, "orbit_y_axis": 200, "orbit_radius": 100, "planet_radius": 10, "period": 13.5, "planet_top": 130, "planet_left": 140, "translate_top": 70, "translate_left": 90 },
+            { "orbit_x_axis": 680, "orbit_y_axis": 200, "orbit_radius": 50, "planet_radius": 5, "period": 16, "planet_top": 170, "planet_left": 630, "translate_top": 30, "translate_left": 50 }]
 
 // Detect the appropriate vendor prefix.
 var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
@@ -103,16 +101,18 @@ var orbit = system.append("svg")
       .attr("r", function(d) { return d.radius });
 
 system.selectAll(".planet")
-      .data(planetRadii)
+      .data(data)
     .enter().append("svg")
       .attr("class", "planet")
-      .attr("width", function(d) { return d.radius * 2; })
-      .attr("height", function(d) { return d.radius * 2; })
+      .attr("width", function(d) { return d.planet_radius * 2; })
+      .attr("height", function(d) { return d.planet_radius * 2; })
+      .style("top", function(d) { return d.planet_top + "px"; })
+      .style("left", function(d) { return d.planet_left + "px"; })
       .style(prefix + "animation-duration", function(d) { return d.period + "s"; }) // this governs how fast the planets orbit
-      .style(prefix + "transform-origin", function(d) { return 105 + "px " + 70 + "px"; })
+      .style(prefix + "transform-origin", function(d) { return d.translate_left + "px " + d.translate_top + "px"; })
     .append("circle")
-      .attr("transform", function(d) { return "translate(" + d.radius + "," + d.radius + ")"; })
-      .attr("r", function(d) { return d.radius; });
+      .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
+      .attr("r", function(d) { return d.planet_radius; });
 
 var circleAttributes = orbit
       .attr("cx", function (d) { return d.x_axis; })
