@@ -65,18 +65,29 @@ circles.append("circle")
   .attr("id", function(d) { return "name-" + d.id; })
   .attr("cx", function (d) { return d.x_axis; })
   .attr("cy", function (d) { return d.y_axis; })
-  .attr("r", function (d) { return d.radius; });
+  .attr("r", function (d) { return d.radius; })
+
+  // mockup for mouseover circles to make line visible
+  .on("mouseover", function(d) {
+    d3.select(".test_line").style("opacity", 0.9);
+  })
+  .on("mouseout", function(d) {
+    d3.select(".test_line").style("opacity", 0);
+  });
 
 // append line to an svg
 svgContainer
   .append("svg:line")
+    .style("opacity", 0)
+    .attr("class", "test_line")
     .attr("x1", 230)
     .attr("y1", 200)
     .attr("x2", 680)
     .attr("y2", 200)
     .attr("stroke-width", 1)
     .attr("stroke", "white")
-    .attr("transform", "translate(0,-100)");  // translate radius
+    .attr("transform", "translate(0,-100)"); // translate radius
+  
   
 
 
