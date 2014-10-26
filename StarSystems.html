@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<head>
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-</head>
 <style>
 
 body {
   background: #222;
   position: relative;
   text-align: center;
+}
+
+.system {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
 }
 
 .circle {
@@ -19,7 +22,41 @@ body {
 
 .circle:hover {
   stroke: #FF2929;
-  stroke-width: 5px;
+  stroke-width: 3px;
+}
+
+.planet {
+  position: absolute;
+  top: 130px;
+  left: 125px;
+  -moz-animation-name: rotate;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-name: rotate;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.planet circle {
+  fill: url(#planet-gradient);
+}
+
+@-moz-keyframes rotate {
+  from { -moz-transform: rotateZ(0deg); }
+  to { -moz-transform: rotateZ(-360deg); }
+}
+
+@-webkit-keyframes rotate {
+  from { -webkit-transform: rotateZ(0deg); }
+  to { -webkit-transform: rotateZ(-360deg); }
+}
+
+@keyframes rotate {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(-360deg); }
 }
 
 </style>
@@ -31,14 +68,17 @@ body {
     </radialGradient>
   </defs>
 </svg>
-
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 var jsonCircles = [{ "x_axis": 230, "y_axis": 200, "radius": 100, "id": 1},
                    { "x_axis": 680, "y_axis": 200, "radius": 100, "id": 2}];
 
-var planetRadii = [{ "x_axis": 230, "y_axis": 200, "radius": 10},
-                   { "x_axis": 680, "y_axis": 200, "radius": 5}];
+var system = d3.select("body")
+      .append("div")
+      .attr("class", "system")
+      .style("width", 1000 + "px")
+      .style("height", 1000 + "px");
 
 var divBackground = d3.select("body").append("div")
       .attr("class", "div-background")
@@ -87,9 +127,5 @@ svgContainer
     .attr("stroke-width", 1)
     .attr("stroke", "white")
     .attr("transform", "translate(0,-100)"); // translate radius
-  
-  
-
-
 
 </script>
