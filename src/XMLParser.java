@@ -14,9 +14,7 @@ public class XMLParser {
 	private  List<Klass> classList = new ArrayList<Klass>();
 	// code stolen from http://www.mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/  
 	public XMLParser(String filePath) {
-
 		try {
-
 			File fXmlFile = new File(filePath);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -30,27 +28,27 @@ public class XMLParser {
 			for (int i = 0; i < classes.getLength(); i++) {
 
 				Node currClass = classes.item(i);
-				
-				Node parrentNode = currClass.getParentNode();
-				
+				Node parentNode = currClass.getParentNode();
+
 				//Go as far back as needed to get to package nodes
-				while(!parrentNode.getNodeName().equals("package"))
-					parrentNode = parrentNode.getParentNode();
-				
+				while(!parentNode.getNodeName().equals("package"))
+					parentNode = parentNode.getParentNode();
+
 				String packageName = "";
-				if (parrentNode.getNodeType() == Node.ELEMENT_NODE){
-					Element parElement = (Element) parrentNode;
-					packageName = parElement.getElementsByTagName("name").item(0).getTextContent();
+				if (parentNode.getNodeType() == Node.ELEMENT_NODE){
+					Element parElement = (Element) parentNode;
+					if (parElement.getElementsByTagName("name").getLength() > 0)
+						packageName = parElement.getElementsByTagName("name").item(0).getTextContent();
 				}
-							
+
 				if (currClass.getNodeType() == Node.ELEMENT_NODE) {
 					Element classElement = (Element) currClass;
-					
+
 					//class name
 					String className = classElement.getElementsByTagName("name").item(0).getTextContent();
 
 					NodeList outboundChildNodes = classElement.getElementsByTagName("outbound");				
-					
+
 					//outbound dependents
 					ArrayList<String> outbounds = new ArrayList<String>();
 					for (int j = 0; j < outboundChildNodes.getLength(); j++){
@@ -64,14 +62,11 @@ public class XMLParser {
 					classList.add(theClass);
 				}
 			}
-			
-			
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void printClasses() {
 		System.out.println("Total classes: " + classList.size());
 		System.out.println("--------------------------------");
@@ -85,14 +80,14 @@ public class XMLParser {
 			System.out.println("--------------------------------");
 		}	
 	}
-	
+
 	public List<Klass> getClassList(){
 		return this.classList;
 	}
-	
-//	public static void main(String argv[]){
-//		XMLParser parser = new XMLParser("Result.xml");
-//		parser.printClasses();
-//	}
+
+	//	public static void main(String argv[]){
+	//		XMLParser parser = new XMLParser("Result.xml");
+	//		parser.printClasses();
+	//	}
 
 }
