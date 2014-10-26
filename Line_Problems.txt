@@ -8,3 +8,6 @@ Solutions?
 	Problems: May have problems with overlapping elements...could make this coordinate svg on top of everything?
 - adjust orbit SVGs so that they reach other orbits
 ******- have separate SVG for lines
+
+
+cannot append line to other elements except SVG?

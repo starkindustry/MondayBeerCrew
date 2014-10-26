@@ -34,25 +34,51 @@ body {
 
 <script>
 
-var jsonCircles = [{ "x_axis": 230, "y_axis": 200, "radius": 100},
-                   { "x_axis": 680, "y_axis": 200, "radius": 100}];
+var jsonCircles = [{ "x_axis": 230, "y_axis": 200, "radius": 100, "id": 1},
+                   { "x_axis": 680, "y_axis": 200, "radius": 100, "id": 2}];
 
 var planetRadii = [{ "x_axis": 230, "y_axis": 200, "radius": 10},
                    { "x_axis": 680, "y_axis": 200, "radius": 5}];
 
-var svgContainer = d3.select("body").append("svg")
+var divBackground = d3.select("body").append("div")
+      .attr("class", "div-background")
+      .attr("width", 2000 + "px")
+      .attr("height", 2000 + "px");
+
+
+var svgContainer = divBackground.append("svg")
+                              .attr("class", "background")
                               .attr("width", 1000)
                               .attr("height", 1000);
 
 var circles = svgContainer.selectAll("circle")
                           .data(jsonCircles)
                           .enter()
-                          .append("circle")
-                          .attr("class", "circle");
 
-var circleAttributes = circles
+circles.append("div")
+  .attr("class", "circle-div")
+  .attr("width", function (d) { return d.radius; } )
+  .attr("height", function (d) { return d.radius; });
+
+circles.append("circle")
+  .attr("class", "circle")
+  .attr("id", function(d) { return "name-" + d.id; })
   .attr("cx", function (d) { return d.x_axis; })
   .attr("cy", function (d) { return d.y_axis; })
   .attr("r", function (d) { return d.radius; });
+
+// append line to an svg
+svgContainer
+  .append("svg:line")
+    .attr("x1", 230)
+    .attr("y1", 200)
+    .attr("x2", 680)
+    .attr("y2", 200)
+    .attr("stroke-width", 1)
+    .attr("stroke", "white")
+    .attr("transform", "translate(0,-100)");  // translate radius
+  
+
+
 
 </script>
