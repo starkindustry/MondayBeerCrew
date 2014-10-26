@@ -17,7 +17,7 @@ public class XMLParser {
 
 		try {
 
-			File fXmlFile = new File("/Users/parham/Desktop/Result.xml");
+			File fXmlFile = new File("Result3.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
@@ -26,12 +26,7 @@ public class XMLParser {
 			//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
 			doc.getDocumentElement().normalize();
 
-			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-
 			NodeList classes = doc.getElementsByTagName("class");
-
-			System.out.println("----------------------------");
-
 			for (int i = 0; i < classes.getLength(); i++) {
 
 				Node currClass = classes.item(i);
@@ -51,7 +46,9 @@ public class XMLParser {
 					ArrayList<String> outbounds = new ArrayList<String>();
 					for (int j = 0; j < outboundChildNodes.getLength(); j++){
 						String dep = classElement.getElementsByTagName("outbound").item(j).getTextContent();
-						if (!outbounds.contains(dep))
+						if (!outbounds.contains(dep) 
+								&& !dep.contains(".ui.") 		// Do not include UI-related dependencies
+								&& !dep.contains(".event.")) 	// Do not include event related dependencies
 							outbounds.add(dep);
 					}
 					for (String s : outbounds)
