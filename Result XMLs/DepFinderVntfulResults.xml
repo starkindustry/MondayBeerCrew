@@ -19,8 +19,6 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.ButtonFactory.createRemoveEventButton()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.ButtonFactory.createSaveEventButton()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.ButtonFactory.createSearchButton()</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.onSuccess(java.lang.Void)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$Display.getRemoveButton()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$Display.resetButtonState(com.github.gwtbootstrap.client.ui.Button)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$Display.setButtonStateComplete(com.github.gwtbootstrap.client.ui.Button)</inbound>
@@ -29,10 +27,6 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$Display.getLoginButton()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.bind()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.checkLoggedIn(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.onSuccess(java.lang.Void)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.onSuccess(java.lang.Void)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display.getRemoveButton()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display.getSaveButton()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display.resetButtonState(com.github.gwtbootstrap.client.ui.Button)</inbound>
@@ -195,7 +189,6 @@
         <name>com.github.gwtbootstrap.client.ui.constants</name>
         <class confirmed="no">
             <name>com.github.gwtbootstrap.client.ui.constants.AlertType</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.onFailure(java.lang.Throwable)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display.setAlert(com.github.gwtbootstrap.client.ui.constants.AlertType, java.lang.String)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.setAlert(com.github.gwtbootstrap.client.ui.constants.AlertType, java.lang.String)</inbound>
         </class>
@@ -238,8 +231,6 @@
         <name>com.github.gwtbootstrap.datepicker.client.ui</name>
         <class confirmed="no">
             <name>com.github.gwtbootstrap.datepicker.client.ui.DateBox</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display.getEndDateBox()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display.getStartDateBox()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.bind()</inbound>
@@ -333,7 +324,6 @@
         <name>com.google.gwt.cell.client</name>
         <class confirmed="no">
             <name>com.google.gwt.cell.client.Cell</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.TableFactory$2.TableFactory$2(com.google.gwt.cell.client.Cell, java.lang.String)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.TableFactory.createHeaderColumn(java.lang.String)</inbound>
         </class>
     </package>
@@ -341,7 +331,6 @@
         <name>com.google.gwt.core.client</name>
         <class confirmed="no">
             <name>com.google.gwt.core.client.Callback</name>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.findGPSLocation()</inbound>
         </class>
         <class confirmed="no">
@@ -350,43 +339,12 @@
         </class>
     </package>
     <package confirmed="no">
-        <name>com.google.gwt.dom.client</name>
-        <class confirmed="no">
-            <name>com.google.gwt.dom.client.NativeEvent</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</inbound>
-        </class>
-    </package>
-    <package confirmed="no">
         <name>com.google.gwt.event.dom.client</name>
         <class confirmed="no">
-            <name>com.google.gwt.event.dom.client.ClickEvent</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-        </class>
-        <class confirmed="no">
             <name>com.google.gwt.event.dom.client.ClickHandler</name>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.bind()</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.bind()</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.bind()</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$1</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.setRecentSearch(java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.util.Date, java.lang.String)</inbound>
         </class>
         <class confirmed="no">
@@ -417,14 +375,7 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.getLocationBox()</inbound>
         </class>
         <class confirmed="no">
-            <name>com.google.gwt.event.dom.client.KeyUpEvent</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6.onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7.onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)</inbound>
-        </class>
-        <class confirmed="no">
             <name>com.google.gwt.event.dom.client.KeyUpHandler</name>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.bind()</inbound>
         </class>
     </package>
@@ -433,15 +384,11 @@
         <class confirmed="no">
             <name>com.google.gwt.event.logical.shared.ValueChangeEvent</name>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
         </class>
         <class confirmed="no">
             <name>com.google.gwt.event.logical.shared.ValueChangeHandler</name>
             <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.bind()</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.bind()</inbound>
         </class>
     </package>
@@ -462,8 +409,6 @@
             <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.FavoriteEvent</inbound>
             <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEvent</inbound>
             <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.SearchEvent</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.sendSearchRequest()</inbound>
         </class>
         <class confirmed="no">
@@ -485,14 +430,11 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.bind()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.eventBus</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.FavoritesPresenter(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.FavoritesView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.eventBus</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.LoginPresenter(com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.LoginView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.access$2(com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.eventBus</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.MainPresenter(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.access$4(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.eventBus</inbound>
@@ -514,20 +456,9 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.findGPSLocation()</inbound>
         </class>
         <class confirmed="no">
-            <name>com.google.gwt.geolocation.client.Position</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.onSuccess(com.google.gwt.geolocation.client.Position)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.onSuccess(java.lang.Object)</inbound>
-        </class>
-        <class confirmed="no">
             <name>com.google.gwt.geolocation.client.Position$Coordinates</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.onSuccess(com.google.gwt.geolocation.client.Position)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.access$2(com.lurn2kode.gwt.vntful.client.view.MainView, com.google.gwt.maps.client.MapWidget, com.google.gwt.geolocation.client.Position$Coordinates)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.placeUserMarker(com.google.gwt.maps.client.MapWidget, com.google.gwt.geolocation.client.Position$Coordinates)</inbound>
-        </class>
-        <class confirmed="no">
-            <name>com.google.gwt.geolocation.client.PositionError</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.onFailure(com.google.gwt.geolocation.client.PositionError)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.onFailure(java.lang.Object)</inbound>
         </class>
     </package>
     <package confirmed="no">
@@ -549,17 +480,7 @@
     <package confirmed="no">
         <name>com.google.gwt.maps.client</name>
         <class confirmed="no">
-            <name>com.google.gwt.maps.client.InfoWindow</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.onClick(com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent)</inbound>
-        </class>
-        <class confirmed="no">
-            <name>com.google.gwt.maps.client.InfoWindowContent</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.onClick(com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent)</inbound>
-        </class>
-        <class confirmed="no">
             <name>com.google.gwt.maps.client.MapWidget</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.onSuccess(com.google.gwt.geolocation.client.Position)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.onClick(com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.MainView()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.access$1(com.lurn2kode.gwt.vntful.client.view.MainView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.access$2(com.lurn2kode.gwt.vntful.client.view.MainView, com.google.gwt.maps.client.MapWidget, com.google.gwt.geolocation.client.Position$Coordinates)</inbound>
@@ -582,12 +503,7 @@
         <name>com.google.gwt.maps.client.event</name>
         <class confirmed="no">
             <name>com.google.gwt.maps.client.event.MarkerClickHandler</name>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.createMarkerAndInfoWindow(com.google.gwt.maps.client.geom.LatLng, java.util.HashMap)</inbound>
-        </class>
-        <class confirmed="no">
-            <name>com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.onClick(com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent)</inbound>
         </class>
     </package>
     <package confirmed="no">
@@ -611,9 +527,6 @@
         </class>
         <class confirmed="no">
             <name>com.google.gwt.maps.client.overlay.Marker</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.MainView$3(com.lurn2kode.gwt.vntful.client.view.MainView, java.util.HashMap, com.google.gwt.maps.client.overlay.Marker)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.onClick(com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.val$marker</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.createMarkerAndInfoWindow(com.google.gwt.maps.client.geom.LatLng, java.util.HashMap)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.placeMarkers(com.google.gwt.maps.client.MapWidget, java.util.List)</inbound>
         </class>
@@ -635,13 +548,11 @@
         </class>
         <class confirmed="no">
             <name>com.google.gwt.user.cellview.client.Header</name>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.TableFactory$2</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.TableFactory.createHeaderColumn(java.lang.String)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.TableFactory.createTable()</inbound>
         </class>
         <class confirmed="no">
             <name>com.google.gwt.user.cellview.client.TextColumn</name>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.TableFactory$1</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.TableFactory.createDataColumn(java.lang.String)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.TableFactory.createTable()</inbound>
         </class>
@@ -655,15 +566,9 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync.getEvents(com.google.gwt.user.client.rpc.AsyncCallback)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync.removeEvent(java.lang.String, com.google.gwt.user.client.rpc.AsyncCallback)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.LoginServiceAsync.login(java.lang.String, com.google.gwt.user.client.rpc.AsyncCallback)</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful.onModuleLoad()</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.fetchEventResults()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.removeFavoriteEvent(java.lang.String)</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.addFavoriteEvent(java.util.HashMap)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.fetchSearchResults(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.removeFavoriteEvent(java.lang.String)</inbound>
@@ -712,7 +617,6 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.container</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.go(com.google.gwt.user.client.ui.HasWidgets)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.go(com.google.gwt.user.client.ui.HasWidgets)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.go(com.google.gwt.user.client.ui.HasWidgets)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.go(com.google.gwt.user.client.ui.HasWidgets)</inbound>
@@ -731,10 +635,6 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.PopUpBuilder.createPopUpPanel()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.FavoritesView.triggerPopupPanel(java.util.HashMap)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.triggerPopupPanel(java.util.HashMap)</inbound>
-        </class>
-        <class confirmed="no">
-            <name>com.google.gwt.user.client.ui.RootPanel</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
         </class>
         <class confirmed="no">
             <name>com.google.gwt.user.client.ui.ScrollPanel</name>
@@ -785,15 +685,8 @@
     <package confirmed="no">
         <name>com.google.gwt.view.client</name>
         <class confirmed="no">
-            <name>com.google.gwt.view.client.CellPreviewEvent</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</inbound>
-        </class>
-        <class confirmed="no">
             <name>com.google.gwt.view.client.CellPreviewEvent$Handler</name>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.bind()</inbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.bind()</inbound>
         </class>
         <class confirmed="no">
@@ -812,14 +705,6 @@
             <name>com.lurn2kode.gwt.vntful.client.AppController</name>
             <outbound type="class" confirmed="no">com.google.gwt.event.logical.shared.ValueChangeHandler</outbound>
             <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.Presenter</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$1.AppController$1(com.lurn2kode.gwt.vntful.client.AppController)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$1.onLogin(com.lurn2kode.gwt.vntful.client.event.LoginEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$1.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$2.AppController$2(com.lurn2kode.gwt.vntful.client.AppController)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$2.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$3.AppController$3(com.lurn2kode.gwt.vntful.client.AppController)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$3.onClickFavorites(com.lurn2kode.gwt.vntful.client.event.FavoriteEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$3.this$0</inbound>
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.AppController.AppController(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager)</name>
                 <outbound type="class" confirmed="no">com.google.gwt.event.shared.HandlerManager</outbound>
@@ -890,57 +775,6 @@
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.AppController.rpcService</name>
                 <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.EventModelServiceAsync</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.AppController$1</name>
-            <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEventHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$1.AppController$1(com.lurn2kode.gwt.vntful.client.AppController)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$1.onLogin(com.lurn2kode.gwt.vntful.client.event.LoginEvent)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.shared.LoginInfo</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$1.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.AppController$2</name>
-            <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.SearchEventHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$2.AppController$2(com.lurn2kode.gwt.vntful.client.AppController)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$2.onSearch(com.lurn2kode.gwt.vntful.client.event.SearchEvent)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.SearchEvent</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$2.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.AppController$3</name>
-            <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.FavoriteEventHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$3.AppController$3(com.lurn2kode.gwt.vntful.client.AppController)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$3.onClickFavorites(com.lurn2kode.gwt.vntful.client.event.FavoriteEvent)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.FavoriteEvent</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.AppController$3.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController</outbound>
             </feature>
         </class>
         <class confirmed="yes">
@@ -1016,9 +850,6 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.AppController(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.rpcService</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.Vntful$1(com.lurn2kode.gwt.vntful.client.Vntful, com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.val$rpcService</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful.onModuleLoad()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.MainPresenter(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.fetchSearchResults(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)</inbound>
@@ -1049,9 +880,6 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.AppController(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.favoriteService</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.Vntful$1(com.lurn2kode.gwt.vntful.client.Vntful, com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.val$favoriteService</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful.onModuleLoad()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.FavoritesPresenter(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.FavoritesView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.favoriteService</inbound>
@@ -1121,9 +949,6 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.AppController(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.loginService</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.Vntful$1(com.lurn2kode.gwt.vntful.client.Vntful, com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.val$loginService</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful.onModuleLoad()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.LoginPresenter(com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.LoginView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.loginService</inbound>
@@ -1283,41 +1108,8 @@
             </feature>
         </class>
         <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.TableFactory$1</name>
-            <outbound type="class" confirmed="no">com.google.gwt.user.cellview.client.TextColumn</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.TableFactory$1.TableFactory$1(java.lang.String)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.TableFactory$1.getValue(java.lang.Object)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.TableFactory$1.getValue(java.util.HashMap)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.TableFactory$1.val$key</name>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.TableFactory$2</name>
-            <outbound type="class" confirmed="no">com.google.gwt.user.cellview.client.Header</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.TableFactory$2.TableFactory$2(com.google.gwt.cell.client.Cell, java.lang.String)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.cell.client.Cell</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.TableFactory$2.getValue()</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.TableFactory$2.val$title</name>
-            </feature>
-        </class>
-        <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.Vntful</name>
             <outbound type="class" confirmed="no">com.google.gwt.core.client.EntryPoint</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.Vntful$1(com.lurn2kode.gwt.vntful.client.Vntful, com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.this$0</inbound>
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.Vntful.Vntful()</name>
             </feature>
@@ -1345,58 +1137,12 @@
                 <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.shared.LoginInfo</outbound>
             </feature>
         </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.Vntful$1</name>
-            <outbound type="class" confirmed="no">com.google.gwt.user.client.rpc.AsyncCallback</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.Vntful$1.Vntful$1(com.lurn2kode.gwt.vntful.client.Vntful, com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.EventModelServiceAsync</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.LoginServiceAsync</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.Vntful$1.onFailure(java.lang.Throwable)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.shared.HandlerManager</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.user.client.ui.HasWidgets</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.user.client.ui.RootPanel</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.EventModelServiceAsync</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.LoginServiceAsync</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.shared.LoginInfo</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(java.lang.Object)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.shared.LoginInfo</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.Vntful$1.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.Vntful$1.val$favoriteService</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.Vntful$1.val$loginService</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.LoginServiceAsync</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.Vntful$1.val$rpcService</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.EventModelServiceAsync</outbound>
-            </feature>
-        </class>
     </package>
     <package confirmed="yes">
         <name>com.lurn2kode.gwt.vntful.client.event</name>
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.event.FavoriteEvent</name>
             <outbound type="class" confirmed="no">com.google.gwt.event.shared.GwtEvent</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$3.onClickFavorites(com.lurn2kode.gwt.vntful.client.event.FavoriteEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.FavoriteEventHandler.onClickFavorites(com.lurn2kode.gwt.vntful.client.event.FavoriteEvent)</inbound>
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.event.FavoriteEvent.FavoriteEvent()</name>
@@ -1426,7 +1172,6 @@
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.event.FavoriteEventHandler</name>
             <outbound type="class" confirmed="no">com.google.gwt.event.shared.EventHandler</outbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$3</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.FavoriteEvent.dispatch(com.google.gwt.event.shared.EventHandler)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.FavoriteEvent.dispatch(com.lurn2kode.gwt.vntful.client.event.FavoriteEventHandler)</inbound>
             <feature confirmed="yes">
@@ -1437,7 +1182,6 @@
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.event.LoginEvent</name>
             <outbound type="class" confirmed="no">com.google.gwt.event.shared.GwtEvent</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$1.onLogin(com.lurn2kode.gwt.vntful.client.event.LoginEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEventHandler.onLogin(com.lurn2kode.gwt.vntful.client.event.LoginEvent)</inbound>
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.event.LoginEvent.LoginEvent(com.lurn2kode.gwt.vntful.shared.LoginInfo)</name>
@@ -1480,7 +1224,6 @@
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.event.LoginEventHandler</name>
             <outbound type="class" confirmed="no">com.google.gwt.event.shared.EventHandler</outbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$1</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEvent.dispatch(com.google.gwt.event.shared.EventHandler)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEvent.dispatch(com.lurn2kode.gwt.vntful.client.event.LoginEventHandler)</inbound>
             <feature confirmed="yes">
@@ -1491,7 +1234,6 @@
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.event.SearchEvent</name>
             <outbound type="class" confirmed="no">com.google.gwt.event.shared.GwtEvent</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$2.onSearch(com.lurn2kode.gwt.vntful.client.event.SearchEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.SearchEventHandler.onSearch(com.lurn2kode.gwt.vntful.client.event.SearchEvent)</inbound>
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.event.SearchEvent.SearchEvent(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)</name>
@@ -1536,7 +1278,6 @@
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.event.SearchEventHandler</name>
             <outbound type="class" confirmed="no">com.google.gwt.event.shared.EventHandler</outbound>
-            <inbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$2</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.SearchEvent.dispatch(com.google.gwt.event.shared.EventHandler)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.SearchEvent.dispatch(com.lurn2kode.gwt.vntful.client.event.SearchEventHandler)</inbound>
             <feature confirmed="yes">
@@ -1550,18 +1291,6 @@
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</name>
             <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.Presenter</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.FavoritesPresenter$1(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.FavoritesPresenter$2(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.FavoritesPresenter$3(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.onSuccess(java.lang.Void)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.FavoritesPresenter$4(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.onSuccess(java.util.List)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.this$0</inbound>
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.FavoritesPresenter(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.FavoritesView)</name>
                 <outbound type="class" confirmed="no">com.google.gwt.event.shared.HandlerManager</outbound>
@@ -1615,96 +1344,7 @@
             </feature>
         </class>
         <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1</name>
-            <outbound type="class" confirmed="no">com.google.gwt.view.client.CellPreviewEvent$Handler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.FavoritesPresenter$1(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.dom.client.NativeEvent</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.view.client.CellPreviewEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.FavoritesPresenter$2(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.client.ui.Button</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3</name>
-            <outbound type="class" confirmed="no">com.google.gwt.user.client.rpc.AsyncCallback</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.FavoritesPresenter$3(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.onFailure(java.lang.Throwable)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.onSuccess(java.lang.Object)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.onSuccess(java.lang.Void)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.client.ui.Button</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4</name>
-            <outbound type="class" confirmed="no">com.google.gwt.user.client.rpc.AsyncCallback</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.FavoritesPresenter$4(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.onFailure(java.lang.Throwable)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.onSuccess(java.lang.Object)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.onSuccess(java.util.List)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$Display</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$1.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$3.onSuccess(java.lang.Void)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter$4.onSuccess(java.util.List)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.FavoritesPresenter(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.FavoritesView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.access$0(com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.FavoritesPresenter.bind()</inbound>
@@ -1752,12 +1392,6 @@
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter</name>
             <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.Presenter</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.LoginPresenter$1(com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2.LoginPresenter$2(com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2.this$0</inbound>
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.LoginPresenter(com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.LoginView)</name>
                 <outbound type="class" confirmed="no">com.google.gwt.event.shared.HandlerManager</outbound>
@@ -1816,47 +1450,7 @@
             </feature>
         </class>
         <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.LoginPresenter$1(com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.shared.GwtEvent</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.shared.HandlerManager</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$Display</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.shared.LoginInfo</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2.LoginPresenter$2(com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.shared.LoginInfo</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$Display</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.LoginPresenter(com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.LoginView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.access$0(com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.bind()</inbound>
@@ -1883,51 +1477,7 @@
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</name>
             <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.Presenter</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1.MainPresenter$1(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.MainPresenter$10(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11.MainPresenter$11(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.MainPresenter$12(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.onSuccess(java.lang.Void)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.MainPresenter$13(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.onSuccess(java.lang.Void)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.MainPresenter$14(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.onFailure(java.lang.Throwable)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.onSuccess(java.util.List)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2.MainPresenter$2(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.MainPresenter$3(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.MainPresenter$4(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.MainPresenter$5(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6.MainPresenter$6(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6.onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7.MainPresenter$7(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7.onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.MainPresenter$8(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.MainPresenter$9(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.this$0</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display.setPresenter(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.access$0(com.lurn2kode.gwt.vntful.client.view.MainView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.presenter</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView.setPresenter(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
@@ -2094,290 +1644,8 @@
             </feature>
         </class>
         <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1.MainPresenter$1(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$1.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.MainPresenter$10(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.shared.GwtEvent</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.shared.HandlerManager</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$10.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11.MainPresenter$11(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$11.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12</name>
-            <outbound type="class" confirmed="no">com.google.gwt.user.client.rpc.AsyncCallback</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.MainPresenter$12(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.onFailure(java.lang.Throwable)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.onSuccess(java.lang.Object)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.onSuccess(java.lang.Void)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.client.ui.Button</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13</name>
-            <outbound type="class" confirmed="no">com.google.gwt.user.client.rpc.AsyncCallback</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.MainPresenter$13(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.onFailure(java.lang.Throwable)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.onSuccess(java.lang.Object)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.onSuccess(java.lang.Void)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.client.ui.Button</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14</name>
-            <outbound type="class" confirmed="no">com.google.gwt.user.client.rpc.AsyncCallback</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.MainPresenter$14(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.onFailure(java.lang.Throwable)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.client.ui.constants.AlertType</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.onSuccess(java.lang.Object)</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.onSuccess(java.util.List)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2.MainPresenter$2(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.logical.shared.ValueChangeHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.MainPresenter$3(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.datepicker.client.ui.DateBox</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.logical.shared.ValueChangeEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.logical.shared.ValueChangeHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.MainPresenter$4(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.datepicker.client.ui.DateBox</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.logical.shared.ValueChangeEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5</name>
-            <outbound type="class" confirmed="no">com.google.gwt.view.client.CellPreviewEvent$Handler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.MainPresenter$5(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.dom.client.NativeEvent</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.view.client.CellPreviewEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.KeyUpHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6.MainPresenter$6(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6.onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.KeyUpEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$6.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.KeyUpHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7.MainPresenter$7(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7.onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.KeyUpEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$7.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.MainPresenter$8(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.client.ui.Button</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.MainPresenter$9(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.github.gwtbootstrap.client.ui.Button</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</name>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$12.onSuccess(java.lang.Void)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$13.onSuccess(java.lang.Void)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$14.onFailure(java.lang.Throwable)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$3.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$4.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$5.onCellPreview(com.google.gwt.view.client.CellPreviewEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$8.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$9.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.MainPresenter(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.access$1(com.lurn2kode.gwt.vntful.client.presenter.MainPresenter)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter.bind()</inbound>
@@ -2628,15 +1896,6 @@
             <name>com.lurn2kode.gwt.vntful.client.view.MainView</name>
             <outbound type="class" confirmed="no">com.google.gwt.user.client.ui.Composite</outbound>
             <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter$Display</outbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$1.MainView$1(com.lurn2kode.gwt.vntful.client.view.MainView, java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.util.Date, java.lang.String)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$1.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.MainView$2(com.lurn2kode.gwt.vntful.client.view.MainView)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.onSuccess(com.google.gwt.geolocation.client.Position)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$2.this$0</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.MainView$3(com.lurn2kode.gwt.vntful.client.view.MainView, java.util.HashMap, com.google.gwt.maps.client.overlay.Marker)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.onClick(com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView$3.this$0</inbound>
             <feature confirmed="yes">
                 <name>com.lurn2kode.gwt.vntful.client.view.MainView.ADV_SEARCH</name>
             </feature>
@@ -3037,102 +2296,6 @@
                 <outbound type="class" confirmed="no">com.google.gwt.i18n.client.NumberFormat</outbound>
                 <outbound type="class" confirmed="no">com.google.gwt.maps.client.MapWidget</outbound>
                 <outbound type="class" confirmed="no">com.google.gwt.maps.client.geom.LatLng</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.view.MainView$1</name>
-            <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.MainView$1(com.lurn2kode.gwt.vntful.client.view.MainView, java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.util.Date, java.lang.String)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.event.dom.client.ClickEvent</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.MainPresenter</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.val$endDateTime</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.val$keyword</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.val$location</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.val$radius</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.val$sortOrder</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$1.val$startDateTime</name>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.view.MainView$2</name>
-            <outbound type="class" confirmed="no">com.google.gwt.core.client.Callback</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$2.MainView$2(com.lurn2kode.gwt.vntful.client.view.MainView)</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$2.onFailure(com.google.gwt.geolocation.client.PositionError)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.geolocation.client.PositionError</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$2.onFailure(java.lang.Object)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.geolocation.client.PositionError</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$2.onSuccess(com.google.gwt.geolocation.client.Position)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.geolocation.client.Position</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.geolocation.client.Position$Coordinates</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.maps.client.MapWidget</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$2.onSuccess(java.lang.Object)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.geolocation.client.Position</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$2.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-        </class>
-        <class confirmed="yes">
-            <name>com.lurn2kode.gwt.vntful.client.view.MainView$3</name>
-            <outbound type="class" confirmed="no">com.google.gwt.maps.client.event.MarkerClickHandler</outbound>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$3.MainView$3(com.lurn2kode.gwt.vntful.client.view.MainView, java.util.HashMap, com.google.gwt.maps.client.overlay.Marker)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.maps.client.overlay.Marker</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$3.onClick(com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent)</name>
-                <outbound type="class" confirmed="no">com.google.gwt.maps.client.InfoWindow</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.maps.client.InfoWindowContent</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.maps.client.MapWidget</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.maps.client.event.MarkerClickHandler$MarkerClickEvent</outbound>
-                <outbound type="class" confirmed="no">com.google.gwt.maps.client.overlay.Marker</outbound>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$3.this$0</name>
-                <outbound type="class" confirmed="yes">com.lurn2kode.gwt.vntful.client.view.MainView</outbound>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$3.val$eventHash</name>
-            </feature>
-            <feature confirmed="yes">
-                <name>com.lurn2kode.gwt.vntful.client.view.MainView$3.val$marker</name>
-                <outbound type="class" confirmed="no">com.google.gwt.maps.client.overlay.Marker</outbound>
             </feature>
         </class>
     </package>
@@ -3932,15 +3095,12 @@
         </class>
         <class confirmed="yes">
             <name>com.lurn2kode.gwt.vntful.shared.LoginInfo</name>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController$1.onLogin(com.lurn2kode.gwt.vntful.client.event.LoginEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.AppController(com.lurn2kode.gwt.vntful.client.FavoritedEventServiceAsync, com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.client.EventModelServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.access$0(com.lurn2kode.gwt.vntful.client.AppController, com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.afterLogin(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.loginInfo</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.AppController.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.LoginService.login(java.lang.String)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful$1.onSuccess(java.lang.Object)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful.access$0(com.lurn2kode.gwt.vntful.client.Vntful, com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful.access$1(com.lurn2kode.gwt.vntful.client.Vntful)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.Vntful.loginInfo</inbound>
@@ -3949,8 +3109,6 @@
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEvent.getLoginInfo()</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEvent.loginInfo</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.event.LoginEvent.setLoginInfo(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$1.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
-            <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter$2.onClick(com.google.gwt.event.dom.client.ClickEvent)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.LoginPresenter(com.lurn2kode.gwt.vntful.client.LoginServiceAsync, com.lurn2kode.gwt.vntful.shared.LoginInfo, com.google.gwt.event.shared.HandlerManager, com.lurn2kode.gwt.vntful.client.view.LoginView)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.access$1(com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter)</inbound>
             <inbound type="feature" confirmed="yes">com.lurn2kode.gwt.vntful.client.presenter.LoginPresenter.checkLoggedIn(com.lurn2kode.gwt.vntful.shared.LoginInfo)</inbound>
