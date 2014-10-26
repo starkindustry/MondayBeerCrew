@@ -3,7 +3,7 @@
 <style>
 
 body {
-  background: #222;
+  background: #ADEBEB;
   position: relative;
   text-align: center;
 }
@@ -16,7 +16,7 @@ body {
 
 .orbit {
   fill: none;
-  stroke: #ccc;
+  stroke: #222;
   stroke-dasharray: 1,3;
 }
 
@@ -81,7 +81,7 @@ var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
     : "";
 
 d3.csv("planets.csv", type, function(error, planets) {
-  var systems = d3.nest()
+  var systems = d3.nest() // id is in order after .nest()
       .key(function(d) { return d.id; })
       .entries(planets);
 
@@ -97,20 +97,94 @@ d3.csv("planets.csv", type, function(error, planets) {
   var system = d3.select("body").selectAll(".system")
       .data(systems)
     .enter().append("div")
+      .attr("id", function(d) { return "name-" + d.key; })
       .attr("class", "system")
       .style("width", function(d) { return d.radius * 2 + "px"; })
-      .style("height", function(d) { return d.radius * 2 + "px"; });
+      .style("height", function(d) { return d.radius * 3 + "px"; });
 
-  system.append("svg")
+  var orbitSpace = system.append("svg")
       .attr("class", "orbit") // this governs the orbit visual
       .attr("width", function(d) { return d.radius * 2; })
-      .attr("height", function(d) { return d.radius * 2; })
-    .append("g")
-      .attr("transform", function(d) { return "translate(" + d.radius + "," + d.radius + ")"; })
+      .attr("height", function(d) { return d.radius * 2; });
+    
+  var orbitCircles = orbitSpace.append("g")
+    .attr("transform", function(d) { return "translate(" + d.radius + "," + d.radius + ")"; })
     .selectAll("circle")
       .data(function(d) { return d.values; })
-    .enter().append("circle")
+    .enter();
+
+  orbitCircles.append("circle")
       .attr("r", function(d) { return x(d.semimajor_axis); });
+
+  var sysDiv = system.selectAll("div");
+  
+  sysDiv.forEach(function(s){
+    var dependValue = s.parentNode.getAttribute("id");
+    if (dependValue == "name-1") {
+      var temp = s.parentNode;
+      var pos = temp.getBoundingClientRect();
+
+      var top = pos.top;
+      var left = pos.left;
+      console.log("top " + pos.top);
+      console.log("right " + pos.right);
+      console.log("bottom " + pos.bottom);
+      console.log("left " + pos.left);
+
+      // USE THIS WHEN IMPLEMENTING
+      var coords = getOffsetRect(temp);   // takes scrolling into account
+
+      drawDepLine(s, top, left);
+    }
+
+  });
+
+  function drawDepLine(sys, top, left) {
+    d3.select("#name-42")
+    .append("svg")
+      .attr("class", "line")
+      .attr("width", left)
+      .attr("height", top)
+    .append("line")
+      .attr("x1", 0)
+      .attr("y1", 0)
+      .attr("x2", left)
+      .attr("y2", top)
+      .attr("stroke-width", 1)
+      .attr("stroke", "black")
+  };
+
+  // from http://javascript.info/tutorial/coordinates
+  function getOffsetRect(elem) {
+    // (1)
+    var box = elem.getBoundingClientRect();
+    
+    var body = document.body;
+    var docElem = document.documentElement;
+    
+    // (2)
+    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+    
+    // (3)
+    var clientTop = docElem.clientTop || body.clientTop || 0;
+    var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+    
+    // (4)
+    var top  = box.top +  scrollTop - clientTop;
+    var left = box.left + scrollLeft - clientLeft;
+    
+    return { top: Math.round(top), left: Math.round(left) }
+};
+
+  // var divs = d3.select("body").selectAll("div");
+
+  // divs[0].forEach(function(div) {
+  //   console.log(div.getAttribute("depend"));
+  // });
+
+  // try to select a single system based on "depend"
+  
 
   system.selectAll(".planet")
       .data(function(d) { return d.values; })
@@ -125,6 +199,8 @@ d3.csv("planets.csv", type, function(error, planets) {
       .attr("transform", function(d) { return "translate(" + d.system.radius + "," + d.system.radius + ")"; })
       .attr("cx", function(d) { return x(d.semimajor_axis); })
       .attr("r", function(d) { return r(d.planet_radius); });
+
+
 });
 
 function type(d) {
