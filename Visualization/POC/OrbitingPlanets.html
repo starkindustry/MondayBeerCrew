@@ -21,13 +21,8 @@ body {
 }
 
 .circle:hover {
-  stroke: #FF0000;
-  stroke-dasharray: none;
-  stroke-width: 1px;
-  -webkit-animation-name: pulse;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-duration: 2s;
+  stroke: #FF2929;
+  stroke-width: 3px;
 }
 
 .planet {
@@ -62,12 +57,6 @@ body {
   to { transform: rotateZ(-360deg); }
 }
 
-@-webkit-keyframes pulse { 
-  0% { opacity: 0.4; }
-  50% { opacity: 1; stroke-width: 2px; }
-  100% { opacity: 0.4; }
-}
-
 </style>
 <svg style="position:absolute;width:0;height:0;">
   <defs>
@@ -86,7 +75,7 @@ var jsonCircles = [{ "x_axis": 230, "y_axis": 200, "radius": 100},
 var planetRadii = [{ "radius": 10, "period": 3.5},
                    { "radius": 5,  "period": 6}];
 
-var data = [{ "orbit_x_axis": 230, "orbit_y_axis": 200, "orbit_radius": 100, "planet_radius": 10, "period": 13.5, "planet_top": 130, "planet_left": 140, "translate_top": 75, "translate_left": 75 },
+var data = [{ "orbit_x_axis": 230, "orbit_y_axis": 200, "orbit_radius": 100, "planet_radius": 10, "period": 13.5, "planet_top": 130, "planet_left": 140, "translate_top": 70, "translate_left": 90 },
             { "orbit_x_axis": 680, "orbit_y_axis": 200, "orbit_radius": 50, "planet_radius": 5, "period": 16, "planet_top": 170, "planet_left": 630, "translate_top": 30, "translate_left": 50 }]
 
 var line_data = [{ "x1": 230, "y1": 200, "x2": 680, "y2": 200, "c1_radius": 100, "c2_radius": 50}];
@@ -135,30 +124,16 @@ orbit_svg.append("svg:line")
     .attr("stroke-width", 1)
     .attr("stroke", "white");
 
-function polarToCartesianY(centre_y, radius, degreeAngle) {
-  var radianAngle = degreeAngle * Math.PI / 180.0;
-  var y = centre_y + radius * Math.sin(radianAngle);
-  return y
-};
-
-function polarToCartesianX(centre_x, radius, degreeAngle) {
-  var radianAngle = degreeAngle * Math.PI / 180.0;
-  var x = centre_x + radius * Math.cos(radianAngle);
-  return x
-};
-
 system.selectAll(".planet")
       .data(data)
     .enter().append("svg")
       .attr("class", "planet")
       .attr("width", function(d) { return d.planet_radius * 2; })
       .attr("height", function(d) { return d.planet_radius * 2; })
-      .style("top", function(d) { return polarToCartesianY(d.orbit_y_axis, d.orbit_radius, 225) - d.planet_radius; })
-      // .style("top", function(d) { return d.planet_top + "px"; })
+      .style("top", function(d) { return d.planet_top + "px"; })
       .style("left", function(d) { return d.planet_left + "px"; })
-      .style("left", function(d) { return polarToCartesianX(d.orbit_x_axis, d.orbit_radius, 225) - d.planet_radius; })
       .style(prefix + "animation-duration", function(d) { return d.period + "s"; }) // this governs how fast the planets orbit
-      .style(prefix + "transform-origin", function(d) { return (d.orbit_y_axis + d.planet_radius - polarToCartesianY(d.orbit_y_axis, d.orbit_radius, 225)) + "px " + (d.orbit_x_axis + d.planet_radius - polarToCartesianX(d.orbit_x_axis, d.orbit_radius, 225)) + "px"; })
+      .style(prefix + "transform-origin", function(d) { return d.translate_left + "px " + d.translate_top + "px"; })
     .append("circle")
       .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
       .attr("r", function(d) { return d.planet_radius; });
