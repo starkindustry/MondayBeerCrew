@@ -24,9 +24,15 @@ body {
   stroke: #FF0000;
   stroke-dasharray: none;
   stroke-width: 1px;
+  -moz-animation-name: glowin;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-duration: .5s;
   -webkit-animation-name: glowin;
   -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: .5s;
+  animation-name: glowin;
+  animation-timing-function: ease-in-out;
+  animation-duration: .5s;
 }
 
 .dependencyLine {
@@ -36,9 +42,15 @@ body {
 
 .dependencyLine:hover {
   stroke: #25D01F;
+  -moz-animation-name: glowin;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-duration: .5s;
   -webkit-animation-name: glowin;
   -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: .5s;
+  animation-name: glowin;
+  animation-timing-function: ease-in-out;
+  animation-duration: .5s;
 }
   
 .planet {
@@ -99,9 +111,6 @@ body {
 </svg>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
-
-var data = [{ "origin_x": 230, "origin_y": 200, "orbit_radius": 100, "planet_radius": 10, "period": 13.5 },
-            { "origin_x": 680, "origin_y": 200, "orbit_radius": 50, "planet_radius": 5, "period": 16 }]
 
 var dynamicData = [{ "origin_x": 200,  "origin_y": 200, "number": 5, "planet_radius": 10,  "period": 4.6, "package": "package1", "title": "ClassA" },
                    { "origin_x": 200,  "origin_y": 200, "number": 4, "planet_radius": 4,   "period": 3,   "package": "package1", "title": "ClassT" },
@@ -195,11 +204,11 @@ orbit_svg.selectAll(".path")
   .on("mousemove", function(){ return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"); })
   .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
 
-
-// Creates a dependency path line given two points.
+// Given two elements, builds a dependency path between them.
 function createDependencyPath(elementA, elementB) {
-  return "M" + getElementXCoordinate(elementA) + "," + (getElementYCoordinate(elementA) - getElementRadius(elementA)) + " Q" + Math.abs(getElementXCoordinate(elementA) - getElementXCoordinate(elementB)) + "," + (Math.abs(getElementXCoordinate(elementA) - getElementXCoordinate(elementB)) / 4) + " " + getElementXCoordinate(elementB) + "," + (getElementYCoordinate(elementB) - getElementRadius(elementB));
+  return "M" + getElementXCoordinate(elementA) + "," + (getElementYCoordinate(elementA) - getElementRadius(elementA)) + " Q" + (((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 2) + 50) + "," + ((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 16) + " " + getElementXCoordinate(elementB) + "," + (getElementYCoordinate(elementB) - getElementRadius(elementB));
 }
+
 // Converts a polar Y coordinate location to a cartesian point.
 function polarToCartesianY(centre_y, radius, degreeAngle) {
   var radianAngle = degreeAngle * Math.PI / 180.0;
