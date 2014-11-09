@@ -24,12 +24,11 @@ body {
   stroke: #FF0000;
   stroke-dasharray: none;
   stroke-width: 1px;
-  -webkit-animation-name: pulse;
-  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: glowin;
   -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 1s;
 }
-
+  
 .planet {
   position: absolute;
   -moz-animation-name: rotate;
@@ -62,22 +61,22 @@ body {
   to { transform: rotateZ(-360deg); }
 }
 
-@-moz-keyframes pulse { 
-  0% { opacity: 0.4; }
-  50% { opacity: 1; stroke-width: 2px; }
-  100% { opacity: 0.4; }
+@-moz-keyframes glowin { 
+  0% { opacity: 0.2; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
-@-webkit-keyframes pulse { 
-  0% { opacity: 0.4; }
-  50% { opacity: 1; stroke-width: 2px; }
-  100% { opacity: 0.4; }
+@-webkit-keyframes glowin { 
+  0% { opacity: 0.2; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
-@keyframes pulse { 
-  0% { opacity: 0.4; }
-  50% { opacity: 1; stroke-width: 2px; }
-  100% { opacity: 0.4; }
+@keyframes glowin { 
+  0% { opacity: 0.2; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
 </style>
@@ -95,20 +94,20 @@ body {
 var data = [{ "origin_x": 230, "origin_y": 200, "orbit_radius": 100, "planet_radius": 10, "period": 13.5 },
             { "origin_x": 680, "origin_y": 200, "orbit_radius": 50, "planet_radius": 5, "period": 16 }]
 
-var dynamicData = [{ "origin_x": 200, "origin_y": 200, "number": 5, "planet_radius": 10, "period": 4.6, "title": "ClassA" },
-                   { "origin_x": 200, "origin_y": 200, "number": 4, "planet_radius": 4, "period": 3, "title": "ClassAB" },
-                   { "origin_x": 200, "origin_y": 200, "number": 3, "planet_radius": 6, "period": 19, "title": "ClassC" },
-                   { "origin_x": 200, "origin_y": 200, "number": 2, "planet_radius": 8, "period": 46, "title": "ClassD" },
-                   { "origin_x": 200, "origin_y": 200, "number": 1, "planet_radius": 12, "period": 1.8, "title": "ClassS" },
-                   { "origin_x": 600, "origin_y": 200, "number": 6, "planet_radius": 5, "period": 5.2, "title": "ClassF" },
+var dynamicData = [{ "origin_x": 200, "origin_y": 200, "number": 5, "planet_radius": 10,  "period": 4.6, "title": "ClassA" },
+                   { "origin_x": 200, "origin_y": 200, "number": 4, "planet_radius": 4,   "period": 3,   "title": "ClassT" },
+                   { "origin_x": 200, "origin_y": 200, "number": 3, "planet_radius": 6,   "period": 19,  "title": "ClassC" },
+                   { "origin_x": 200, "origin_y": 200, "number": 2, "planet_radius": 8,   "period": 46,  "title": "ClassD" },
+                   { "origin_x": 200, "origin_y": 200, "number": 1, "planet_radius": 12,  "period": 1.8, "title": "ClassS" },
+                   { "origin_x": 600, "origin_y": 200, "number": 6, "planet_radius": 5,   "period": 5.2, "title": "ClassF" },
                    { "origin_x": 600, "origin_y": 200, "number": 3, "planet_radius": 3.9, "period": 2.1, "title": "ClassR" },
-                   { "origin_x": 600, "origin_y": 200, "number": 2, "planet_radius": 7, "period": 0.5, "title": "ClassQ" },
-                   { "origin_x": 600, "origin_y": 200, "number": 4, "planet_radius": 3, "period": 74, "title": "ClassG" },
+                   { "origin_x": 600, "origin_y": 200, "number": 2, "planet_radius": 7,   "period": 0.5, "title": "ClassQ" },
+                   { "origin_x": 600, "origin_y": 200, "number": 4, "planet_radius": 3,   "period": 74,  "title": "ClassG" },
                    { "origin_x": 600, "origin_y": 200, "number": 5, "planet_radius": 1.9, "period": 4.8, "title": "ClassZ" },
-                   { "origin_x": 600, "origin_y": 200, "number": 1, "planet_radius": 15, "period": 18, "title": "ClassY" },
-                   { "origin_x": 600, "origin_y": 200, "number": 7, "planet_radius": 4, "period": 5.4, "title": "ClassM" }]
+                   { "origin_x": 600, "origin_y": 200, "number": 1, "planet_radius": 15,  "period": 18,  "title": "ClassY" },
+                   { "origin_x": 600, "origin_y": 200, "number": 7, "planet_radius": 4,   "period": 5.4, "title": "ClassM" }]
 
-var line_data = [{ "x1": 230, "y1": 200, "x2": 680, "y2": 200, "c1_radius": 100, "c2_radius": 50}];
+// var line_data = [{ "x1": 230, "y1": 200, "x2": 680, "y2": 200, "c1_radius": 100, "c2_radius": 50}];
 
 // Sort data by system name and period
 dynamicData.sort(function(a, b) {
@@ -120,49 +119,56 @@ var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
     : "-moz-transform" in document.body.style ? "-moz-"
     : "";
 
+var tooltip = d3.select("body")
+  .append("div")
+  .style("position", "absolute")
+  .style("z-index", "10")
+  .style("visibility", "hidden")
+  .style("color", "white")
+  .style("font-family", "Optima,Segoe,\"Segoe UI\",Candara,Calibri,Arial,sans-serif")
+  .style("font-size", "12px");
+
 var system = d3.select("body")
       .append("div")
       .attr("class", "system")
-      .style("width", 1000 + "px")
-      .style("height", 1000 + "px");
+      .style("width", "100%")
+      .style("height", "100%");
 
 var orbit_svg = system.append("svg")
       .attr("class", "orbit")
-      .attr("width", function(d) { return 1000; })
-      .attr("height", function(d) { return 1000; });
+      .attr("width", function(d) { return "100%"; })
+      .attr("height", function(d) { return "100%"; });
 
 orbit_svg.append("g")
       .selectAll("circle")
       .data(dynamicData)
       .enter().append("circle")
       .attr("class", "circle")
+      .attr("svg:text", function(d) { return d.title; })
       .attr("cx", function (d) { return d.origin_x; })
       .attr("cy", function (d) { return d.origin_y; })
       .attr("r", function (d) { return d.number * 20; })
 
       // mockup for mouseover circles to make line visible
-      .on("mouseover", function(d) {
-          d3.select(".test_line").style("opacity", 0.9);
-      })
-      .on("mouseout", function(d) {
-          d3.select(".test_line").style("opacity", 0);
-      });
+      .on("mouseover", function(d){ return tooltip.style("visibility", "visible").text(d.title); })
+      .on("mousemove", function(){ return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"); })
+      .on("mouseout", function(){ return tooltip.style("visibility", "hidden"); });
 
 orbit_svg.selectAll("circle")
     .data(dynamicData)
     .append("svg:title")
     .text(function(d) { return d.title; });
 
-orbit_svg.append("svg:line")
-    .data(line_data)
-    .style("opacity", 0)
-    .attr("class", "test_line")
-    .attr("x1", function (d) { return d.x1; })
-    .attr("y1", function (d) { return d.y1 - d.c1_radius; })
-    .attr("x2", function (d) { return d.x2; })
-    .attr("y2", function (d) { return d.y2 - d.c2_radius; })
-    .attr("stroke-width", 1)
-    .attr("stroke", "white");
+// orbit_svg.append("svg:line")
+//     .data(line_data)
+//     .style("opacity", 0)
+//     .attr("class", "test_line")
+//     .attr("x1", function (d) { return d.x1; })
+//     .attr("y1", function (d) { return d.y1 - d.c1_radius; })
+//     .attr("x2", function (d) { return d.x2; })
+//     .attr("y2", function (d) { return d.y2 - d.c2_radius; })
+//     .attr("stroke-width", 1)
+//     .attr("stroke", "white");
 
 system.selectAll(".planet")
       .data(dynamicData)
