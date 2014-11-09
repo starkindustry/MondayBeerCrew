@@ -28,6 +28,18 @@ body {
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-duration: 1.5s;
 }
+
+.dependencyLine {
+  fill: none;
+  stroke: #000000;
+}
+
+.dependencyLine:hover {
+  stroke: #25D01F;
+  -webkit-animation-name: glowin;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-duration: 1.5s;
+}
   
 .planet {
   position: absolute;
@@ -109,6 +121,8 @@ var dynamicData = [{ "origin_x": 200, "origin_y": 200, "number": 5, "planet_radi
 
 var line_data = [{ "x1": 230, "y1": 200, "x2": 680, "y2": 200, "c1_radius": 100, "c2_radius": 50}];
 
+var dependency_data = [{ "level": 34, "percentage": 65 }];
+
 // Sort data by system name and period
 dynamicData.sort(function(a, b) {
   return b.number - a.number;
@@ -186,11 +200,10 @@ var classF = document.getElementById("ClassR");
 
 // Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
 orbit_svg.append("path")
-  .data(dynamicData)
+  .data(dependency_data)
+  .attr("class", "dependencyLine")
   .attr("d", "M" + classA.cx.baseVal.value + "," + classA.cy.baseVal.value + " Q300,0 " + classM.cx.baseVal.value + "," + classM.cy.baseVal.value)
-  .style("stroke", "green")
-  .style("fill", "none")
-  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").text(d.package + "\r\n" + d.title); })
+  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").text("Level: " + d.level + " Percentage:" + d.percentage + "%"); })
   .on("mousemove", function(){ return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"); })
   .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
 
