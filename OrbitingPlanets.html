@@ -106,22 +106,29 @@ body {
 var data = [{ "origin_x": 230, "origin_y": 200, "orbit_radius": 100, "planet_radius": 10, "period": 13.5 },
             { "origin_x": 680, "origin_y": 200, "orbit_radius": 50, "planet_radius": 5, "period": 16 }]
 
-var dynamicData = [{ "origin_x": 200, "origin_y": 200, "number": 5, "planet_radius": 10,  "period": 4.6, "package": "package1", "title": "ClassA" },
-                   { "origin_x": 200, "origin_y": 200, "number": 4, "planet_radius": 4,   "period": 3,   "package": "package1", "title": "ClassT" },
-                   { "origin_x": 200, "origin_y": 200, "number": 3, "planet_radius": 6,   "period": 19,  "package": "package1", "title": "ClassC" },
-                   { "origin_x": 200, "origin_y": 200, "number": 2, "planet_radius": 8,   "period": 46,  "package": "package1", "title": "ClassD" },
-                   { "origin_x": 200, "origin_y": 200, "number": 1, "planet_radius": 12,  "period": 1.8, "package": "package1", "title": "ClassS" },
-                   { "origin_x": 600, "origin_y": 200, "number": 1, "planet_radius": 5,   "period": 5.2, "package": "package2", "title": "ClassF" },
-                   { "origin_x": 600, "origin_y": 200, "number": 3, "planet_radius": 3.9, "period": 2.1, "package": "package2", "title": "ClassR" },
-                   { "origin_x": 600, "origin_y": 200, "number": 2, "planet_radius": 7,   "period": 9.5, "package": "package2", "title": "ClassQ" },
-                   { "origin_x": 600, "origin_y": 200, "number": 4, "planet_radius": 3,   "period": 74,  "package": "package2", "title": "ClassG" },
+var dynamicData = [{ "origin_x": 200,  "origin_y": 200, "number": 5, "planet_radius": 10,  "period": 4.6, "package": "package1", "title": "ClassA" },
+                   { "origin_x": 200,  "origin_y": 200, "number": 4, "planet_radius": 4,   "period": 3,   "package": "package1", "title": "ClassT" },
+                   { "origin_x": 200,  "origin_y": 200, "number": 3, "planet_radius": 6,   "period": 19,  "package": "package1", "title": "ClassC" },
+                   { "origin_x": 200,  "origin_y": 200, "number": 2, "planet_radius": 8,   "period": 46,  "package": "package1", "title": "ClassD" },
+                   { "origin_x": 200,  "origin_y": 200, "number": 1, "planet_radius": 12,  "period": 1.8, "package": "package1", "title": "ClassS" },
+                   { "origin_x": 600,  "origin_y": 200, "number": 1, "planet_radius": 5,   "period": 5.2, "package": "package2", "title": "ClassF" },
+                   { "origin_x": 600,  "origin_y": 200, "number": 3, "planet_radius": 3.9, "period": 2.1, "package": "package2", "title": "ClassR" },
+                   { "origin_x": 600,  "origin_y": 200, "number": 2, "planet_radius": 7,   "period": 9.5, "package": "package2", "title": "ClassQ" },
+                   { "origin_x": 600,  "origin_y": 200, "number": 4, "planet_radius": 3,   "period": 74,  "package": "package2", "title": "ClassG" },
                    { "origin_x": 1000, "origin_y": 200, "number": 1, "planet_radius": 1.9, "period": 4.8, "package": "package3", "title": "ClassZ" },
                    { "origin_x": 1000, "origin_y": 200, "number": 2, "planet_radius": 8.3, "period": 18,  "package": "package3", "title": "ClassY" },
                    { "origin_x": 1000, "origin_y": 200, "number": 3, "planet_radius": 4,   "period": 5.4, "package": "package3", "title": "ClassM" }]
 
-var line_data = [{ "x1": 230, "y1": 200, "x2": 680, "y2": 200, "c1_radius": 100, "c2_radius": 50}];
-
-var dependency_data = [{ "level": 34, "percentage": 65 }];
+var dependency_data = [{ "class1": "ClassA", "class2": "ClassM", "callCount": 12, "rating": 0.4 },
+                       { "class1": "ClassT", "class2": "ClassC", "callCount": 4,  "rating": 0.8 },
+                       { "class1": "ClassD", "class2": "ClassQ", "callCount": 8,  "rating": 0.3 },
+                       { "class1": "ClassS", "class2": "ClassY", "callCount": 6,  "rating": 0.1 },
+                       { "class1": "ClassR", "class2": "ClassZ", "callCount": 2,  "rating": 0.7 },
+                       { "class1": "ClassQ", "class2": "ClassG", "callCount": 1,  "rating": 0.8 },
+                       { "class1": "ClassG", "class2": "ClassD", "callCount": 4,  "rating": 1 },
+                       { "class1": "ClassZ", "class2": "ClassR", "callCount": 65, "rating": 0.6 },
+                       { "class1": "ClassY", "class2": "ClassG", "callCount": 4,  "rating": 0.8 },
+                       { "class1": "ClassM", "class2": "ClassF", "callCount": 3,  "rating": 0.2 }];
 
 // Sort data by system name and period
 dynamicData.sort(function(a, b) {
@@ -182,11 +189,12 @@ system.selectAll(".planet")
       .attr("r", function(d) { return d.planet_radius; });
 
 // Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
-orbit_svg.append("path")
-  .data(dynamicData)
+orbit_svg.selectAll(".path")
+  .data(dependency_data)
+  .enter().append("path")
   .attr("class", "dependencyLine")
-  .attr("d", createDependencyPath("ClassA", "ClassR"))
-  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").text("Level: " + 34 + " Percentage: " + 67 + "%"); })
+  .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) })
+  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").text(d.class2 + " depends on " + d.class1); })
   .on("mousemove", function(){ return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"); })
   .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
 
