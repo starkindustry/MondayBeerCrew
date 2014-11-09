@@ -26,7 +26,7 @@ body {
   stroke-width: 1px;
   -webkit-animation-name: glowin;
   -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: 1.5s;
 }
   
 .planet {
@@ -104,7 +104,7 @@ var dynamicData = [{ "origin_x": 200, "origin_y": 200, "number": 5, "planet_radi
                    { "origin_x": 600, "origin_y": 200, "number": 2, "planet_radius": 7,   "period": 9.5, "package": "package2", "title": "ClassQ" },
                    { "origin_x": 600, "origin_y": 200, "number": 4, "planet_radius": 3,   "period": 74,  "package": "package2", "title": "ClassG" },
                    { "origin_x": 600, "origin_y": 200, "number": 5, "planet_radius": 1.9, "period": 4.8, "package": "package2", "title": "ClassZ" },
-                   { "origin_x": 600, "origin_y": 200, "number": 1, "planet_radius": 8.3,  "period": 18,  "package": "package2", "title": "ClassY" },
+                   { "origin_x": 600, "origin_y": 200, "number": 1, "planet_radius": 8.3, "period": 18,  "package": "package2", "title": "ClassY" },
                    { "origin_x": 600, "origin_y": 200, "number": 7, "planet_radius": 4,   "period": 5.4, "package": "package2", "title": "ClassM" }]
 
 var line_data = [{ "x1": 230, "y1": 200, "x2": 680, "y2": 200, "c1_radius": 100, "c2_radius": 50}];
@@ -184,24 +184,16 @@ var classM = document.getElementById("ClassM");
 var classB = document.getElementById("ClassS");
 var classF = document.getElementById("ClassR");
 
-// Build a line using the data from the individual orbits; this is dynamic, so we can build them from the ID
-orbit_svg.append("svg:line")
-  .style("opacity", 1)
-  .attr("x1", function() { return classA.cx.baseVal.value })
-  .attr("y1", function() { return classA.cy.baseVal.value - classA.r.baseVal.value })
-  .attr("x2", function() { return classM.cx.baseVal.value })
-  .attr("y2", function() { return classM.cy.baseVal.value - classM.r.baseVal.value })
-  .style("stroke", "white")
-  .style("stroke-width", 1);
+// Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
+orbit_svg.append("path")
+  .data(dynamicData)
+  .attr("d", "M" + classA.cx.baseVal.value + "," + classA.cy.baseVal.value + " Q300,0 " + classM.cx.baseVal.value + "," + classM.cy.baseVal.value)
+  .style("stroke", "green")
+  .style("fill", "none")
+  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").text(d.package + "\r\n" + d.title); })
+  .on("mousemove", function(){ return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"); })
+  .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
 
-orbit_svg.append("svg:line")
-  .style("opacity", 1)
-  .attr("x1", function() { return classB.cx.baseVal.value })
-  .attr("y1", function() { return classB.cy.baseVal.value - classB.r.baseVal.value })
-  .attr("x2", function() { return classF.cx.baseVal.value })
-  .attr("y2", function() { return classF.cy.baseVal.value - classF.r.baseVal.value })
-  .style("stroke", "white")
-  .style("stroke-width", 1);
 
 function polarToCartesianY(centre_y, radius, degreeAngle) {
   var radianAngle = degreeAngle * Math.PI / 180.0;
@@ -214,5 +206,25 @@ function polarToCartesianX(centre_x, radius, degreeAngle) {
   var x = centre_x + radius * Math.cos(radianAngle);
   return x
 };
+
+// Dynamically built lines (probably to be replaced with curved paths)
+// orbit_svg.append("svg:line")
+//   .style("opacity", 1)
+//   .attr("x1", function() { return classB.cx.baseVal.value })
+//   .attr("y1", function() { return classB.cy.baseVal.value - classB.r.baseVal.value })
+//   .attr("x2", function() { return classF.cx.baseVal.value })
+//   .attr("y2", function() { return classF.cy.baseVal.value - classF.r.baseVal.value })
+//   .style("stroke", "white")
+//   .style("stroke-width", 1);
+
+// orbit_svg.append("svg:line")
+//   .style("opacity", 1)
+//   .attr("x1", function() { return classA.cx.baseVal.value })
+//   .attr("y1", function() { return classA.cy.baseVal.value - classA.r.baseVal.value })
+//   .attr("x2", function() { return classM.cx.baseVal.value })
+//   .attr("y2", function() { return classM.cy.baseVal.value - classM.r.baseVal.value })
+//   .style("stroke", "white")
+//   .style("stroke-width", 1);
+
 
 </script>
