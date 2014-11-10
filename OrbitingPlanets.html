@@ -52,6 +52,13 @@ body {
   animation-timing-function: ease-in-out;
   animation-duration: .5s;
 }
+
+.dependencyPath {
+  fill:none;
+  opacity: 0;
+  stroke: #000000;
+  stroke-width: 5px;
+}
   
 .planet {
   position: absolute;
@@ -208,15 +215,41 @@ system.selectAll(".planet")
       .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
       .attr("r", function(d) { return d.planet_radius; });
 
-// Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
-orbit_svg.selectAll(".path")
-  .data(dependency_data)
-  .enter().append("path")
-  .attr("class", "dependencyLine")
-  .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) })
-  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
-  .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
-  .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
+//a group to hold each path line and its mouseover area
+var path_group = orbit_svg.selectAll(".path")
+      .data(dependency_data)
+      .enter()
+      .append("g");
+
+//Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
+path_group.each(function(d) {
+    selection = d3.select(this);
+    
+    //Path line - the actual path line drawn
+    var path = selection.append("path")
+        .attr("class", "dependencyLine")
+        .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) });
+
+    // Path's "shadow" or area that can be mouseover'd
+    var pathShadow = selection.append("path")
+        .attr("class", "dependencyPath")
+        .attr("d", function(d) {return createDependencyPath(d.class1, d.class2) })
+        .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
+        .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
+        .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
+});
+
+path_group.on("mouseover", function(d) {
+    d3.select(this).select(".dependencyLine")
+      .style("stroke", "#25D01F")
+      .style(prefix + "animation-name","glowin")
+      .style(prefix + "animation-timing-function","ease-in-out")
+      .style(prefix + "animation-duration","1s");
+}).on("mouseout", function(d) {
+    d3.select(this).select(".dependencyLine")
+      .style("stroke", "#000000")
+      .transition().duration(1000);
+});
 
 // Given two elements, builds a dependency path between them.
 function createDependencyPath(elementA, elementB) {
