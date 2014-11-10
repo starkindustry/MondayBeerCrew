@@ -108,9 +108,8 @@ body {
 }
 
 @-webkit-keyframes glow {
-  0%,100% { text-shadow:0 0 1px #fff;  }
-  25%     { text-shadow:0 0 10px #fff; }
-  75%     { text-shadow:0 0 10px #fff; }
+  0%,100% { text-shadow:0 0 10px #000;  }
+  50%     { text-shadow:0 0 10px #fff; }
 }
 
 </style>
@@ -203,7 +202,7 @@ orbit_svg.append("g")
       .on("mouseover", function(d){ return tooltip.style(prefix + "animation-name", "glow")
                                                   .style(prefix + "animation-iteration-count", "infinite")
                                                   .style(prefix + "animation-timing-function", "ease-in-out")
-                                                  .style(prefix + "animation-duration", "3s")
+                                                  .style(prefix + "animation-duration", "2s")
                                                   .style("visibility", "visible")
                                                   .style("text-align", "left")
                                                   .html("Class: " + d.title + "<BR>Package: " + d.package); 
