@@ -167,7 +167,7 @@ var tooltip = d3.select("body")
   .style("visibility", "hidden")
   .style("color", "white")
   .style("font-family", "monaco,Consolas,\"Lucida Console\",monospace")
-  .style("font-size", "14px")
+  .style("font-size", "13px")
   .style("font-style", "italic");
 
 var system = d3.select("body")
@@ -195,11 +195,11 @@ orbit_svg.append("g")
                                                   .style(prefix + "animation-timing-function", "linear")
                                                   .style(prefix + "animation-duration", "3s")
                                                   .style("visibility", "visible")
-                                                  .html("Package: " + d.package + "<BR>" + "Class: " + d.title); 
+                                                  .style("text-align", "left")
+                                                  .html("Class: " + d.title + "<BR>Package: " + d.package); 
                                   })
       .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
-      .on("mouseout", function(){ return tooltip.style("visibility", "hidden"); 
-});
+      .on("mouseout", function(){ return tooltip.style("visibility", "hidden"); });
 
 system.selectAll(".planet")
       .data(dynamicData)
