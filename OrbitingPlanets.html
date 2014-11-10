@@ -37,7 +37,7 @@ body {
 
 .dependencyLine {
   fill: none;
-  stroke: #000000;
+  stroke: #121212;
 }
 
 .dependencyLine:hover {
@@ -107,10 +107,9 @@ body {
   100% { opacity: 1;   }
 }
 
-@-webkit-keyframes pulse { 
-  0%   { opacity: 0.6; }
-  50%  { opacity: 1;   }
-  100% { opacity: 0.6; }
+@-webkit-keyframes glow {
+  0%,100% { text-shadow:0 0 1px #fff;  }
+  25%     { text-shadow:0 0 10px #fff; }
 }
 
 </style>
@@ -200,9 +199,9 @@ orbit_svg.append("g")
       .attr("cx", function (d) { return d.origin_x; })
       .attr("cy", function (d) { return d.origin_y; })
       .attr("r", function (d) { return d.number * 20; })
-      .on("mouseover", function(d){ return tooltip.style(prefix + "animation-name", "pulse")
+      .on("mouseover", function(d){ return tooltip.style(prefix + "animation-name", "glow")
                                                   .style(prefix + "animation-iteration-count", "infinite")
-                                                  .style(prefix + "animation-timing-function", "linear")
+                                                  .style(prefix + "animation-timing-function", "ease-in-out")
                                                   .style(prefix + "animation-duration", "3s")
                                                   .style("visibility", "visible")
                                                   .style("text-align", "left")
@@ -257,7 +256,7 @@ path_group.on("mouseover", function(d) {
       .style(prefix + "animation-duration","1s");
 }).on("mouseout", function(d) {
     d3.select(this).select(".dependencyLine")
-      .style("stroke", "#000000")
+      .style("stroke", "#121212")
       .transition().duration(1000);
 });
 
