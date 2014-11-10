@@ -100,6 +100,12 @@ body {
   100% { opacity: 1;   }
 }
 
+@-webkit-keyframes pulse { 
+  0%   { opacity: 0.6; }
+  50%  { opacity: 1;   }
+  100% { opacity: 0.6; }
+}
+
 </style>
 <svg style="position:absolute;width:0;height:0;">
   <defs>
@@ -148,12 +154,14 @@ var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
 
 var tooltip = d3.select("body")
   .append("div")
+  .attr("class", "tooltip")
   .style("position", "absolute")
   .style("z-index", "10")
   .style("visibility", "hidden")
   .style("color", "white")
-  .style("font-family", "Optima,Segoe,\"Segoe UI\",Candara,Calibri,Arial,sans-serif")
-  .style("font-size", "12px");
+  .style("font-family", "monaco,Consolas,\"Lucida Console\",monospace")
+  .style("font-size", "14px")
+  .style("font-style", "italic");
 
 var system = d3.select("body")
       .append("div")
@@ -175,8 +183,14 @@ orbit_svg.append("g")
       .attr("cx", function (d) { return d.origin_x; })
       .attr("cy", function (d) { return d.origin_y; })
       .attr("r", function (d) { return d.number * 20; })
-      .on("mouseover", function(d){ return tooltip.style("visibility", "visible").text(d.package + "\r\n" + d.title); })
-      .on("mousemove", function(){ return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"); })
+      .on("mouseover", function(d){ return tooltip.style(prefix + "animation-name", "pulse")
+                                                  .style(prefix + "animation-iteration-count", "infinite")
+                                                  .style(prefix + "animation-timing-function", "linear")
+                                                  .style(prefix + "animation-duration", "3s")
+                                                  .style("visibility", "visible")
+                                                  .html("Package: " + d.package + "<BR>" + "Class: " + d.title); 
+                                  })
+      .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
       .on("mouseout", function(){ return tooltip.style("visibility", "hidden"); 
 });
 
@@ -200,8 +214,8 @@ orbit_svg.selectAll(".path")
   .enter().append("path")
   .attr("class", "dependencyLine")
   .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) })
-  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").text(d.class2 + " depends on " + d.class1); })
-  .on("mousemove", function(){ return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"); })
+  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
+  .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
   .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
 
 // Given two elements, builds a dependency path between them.
