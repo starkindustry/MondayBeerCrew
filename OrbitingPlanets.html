@@ -37,7 +37,7 @@ body {
 
 .dependencyLine {
   fill: none;
-  stroke: #000000;
+  stroke: #121212;
 }
 
 .dependencyLine:hover {
@@ -51,6 +51,13 @@ body {
   animation-name: glowin;
   animation-timing-function: ease-in-out;
   animation-duration: .5s;
+}
+
+.dependencyPath {
+  fill:none;
+  opacity: 0;
+  stroke: #000000;
+  stroke-width: 5px;
 }
   
 .planet {
@@ -100,10 +107,9 @@ body {
   100% { opacity: 1;   }
 }
 
-@-webkit-keyframes pulse { 
-  0%   { opacity: 0.6; }
-  50%  { opacity: 1;   }
-  100% { opacity: 0.6; }
+@-webkit-keyframes glow {
+  0%,100% { text-shadow:0 0 10px #000;  }
+  50%     { text-shadow:0 0 10px #fff; }
 }
 
 </style>
@@ -118,18 +124,23 @@ body {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var dynamicData = [{ "origin_x": 200,  "origin_y": 200, "number": 5, "planet_radius": 10,  "period": 4.6, "package": "package1", "title": "ClassA" },
-                   { "origin_x": 200,  "origin_y": 200, "number": 4, "planet_radius": 4,   "period": 3,   "package": "package1", "title": "ClassT" },
-                   { "origin_x": 200,  "origin_y": 200, "number": 3, "planet_radius": 6,   "period": 19,  "package": "package1", "title": "ClassC" },
-                   { "origin_x": 200,  "origin_y": 200, "number": 2, "planet_radius": 8,   "period": 46,  "package": "package1", "title": "ClassD" },
-                   { "origin_x": 200,  "origin_y": 200, "number": 1, "planet_radius": 12,  "period": 1.8, "package": "package1", "title": "ClassS" },
-                   { "origin_x": 600,  "origin_y": 200, "number": 1, "planet_radius": 5,   "period": 5.2, "package": "package2", "title": "ClassF" },
-                   { "origin_x": 600,  "origin_y": 200, "number": 3, "planet_radius": 3.9, "period": 2.1, "package": "package2", "title": "ClassR" },
-                   { "origin_x": 600,  "origin_y": 200, "number": 2, "planet_radius": 7,   "period": 9.5, "package": "package2", "title": "ClassQ" },
-                   { "origin_x": 600,  "origin_y": 200, "number": 4, "planet_radius": 3,   "period": 74,  "package": "package2", "title": "ClassG" },
-                   { "origin_x": 1000, "origin_y": 200, "number": 1, "planet_radius": 1.9, "period": 4.8, "package": "package3", "title": "ClassZ" },
-                   { "origin_x": 1000, "origin_y": 200, "number": 2, "planet_radius": 8.3, "period": 18,  "package": "package3", "title": "ClassY" },
-                   { "origin_x": 1000, "origin_y": 200, "number": 3, "planet_radius": 4,   "period": 5.4, "package": "package3", "title": "ClassM" }]
+var dynamicData = [{ "origin_x": 200,  "origin_y": 200, "number": 5, "planet_radius": 10,  "period": 4.6, "package": "1", "title": "ClassA" },
+                   { "origin_x": 200,  "origin_y": 200, "number": 4, "planet_radius": 4,   "period": 3,   "package": "1", "title": "ClassT" },
+                   { "origin_x": 200,  "origin_y": 200, "number": 3, "planet_radius": 6,   "period": 19,  "package": "1", "title": "ClassC" },
+                   { "origin_x": 200,  "origin_y": 200, "number": 2, "planet_radius": 8,   "period": 46,  "package": "1", "title": "ClassD" },
+                   { "origin_x": 200,  "origin_y": 200, "number": 1, "planet_radius": 12,  "period": 1.8, "package": "1", "title": "ClassS" },
+                   { "origin_x": 600,  "origin_y": 200, "number": 1, "planet_radius": 5,   "period": 5.2, "package": "2", "title": "ClassF" },
+                   { "origin_x": 600,  "origin_y": 200, "number": 3, "planet_radius": 3.9, "period": 2.1, "package": "2", "title": "ClassR" },
+                   { "origin_x": 600,  "origin_y": 200, "number": 2, "planet_radius": 7,   "period": 9.5, "package": "2", "title": "ClassQ" },
+                   { "origin_x": 600,  "origin_y": 200, "number": 4, "planet_radius": 3,   "period": 74,  "package": "2", "title": "ClassG" },
+                   { "origin_x": 1000, "origin_y": 200, "number": 1, "planet_radius": 1.9, "period": 4.8, "package": "3", "title": "ClassZ" },
+                   { "origin_x": 1000, "origin_y": 200, "number": 2, "planet_radius": 8.3, "period": 18,  "package": "3", "title": "ClassY" },
+                   { "origin_x": 1000, "origin_y": 200, "number": 3, "planet_radius": 4,   "period": 5.4, "package": "3", "title": "ClassM" },
+                   { "origin_x": 600, "origin_y": 500, "number": 3, "planet_radius": 2,    "period": 3,   "package": "4", "title": "ClassP" },
+                   { "origin_x": 600, "origin_y": 500, "number": 1, "planet_radius": 1.8,  "period": 4,   "package": "4", "title": "ClassV" },
+                   { "origin_x": 600, "origin_y": 500, "number": 5, "planet_radius": 7.2,  "period": 1,   "package": "4", "title": "ClassN" },
+                   { "origin_x": 600, "origin_y": 500, "number": 2, "planet_radius": 4,    "period": 8,   "package": "4", "title": "ClassX" },
+                   { "origin_x": 600, "origin_y": 500, "number": 4, "planet_radius": 0.9,  "period": 9,   "package": "4", "title": "ClassO" }]
 
 var dependency_data = [{ "class1": "ClassA", "class2": "ClassM", "callCount": 12, "rating": 0.4 },
                        { "class1": "ClassT", "class2": "ClassC", "callCount": 4,  "rating": 0.8 },
@@ -137,10 +148,15 @@ var dependency_data = [{ "class1": "ClassA", "class2": "ClassM", "callCount": 12
                        { "class1": "ClassS", "class2": "ClassY", "callCount": 6,  "rating": 0.1 },
                        { "class1": "ClassR", "class2": "ClassZ", "callCount": 2,  "rating": 0.7 },
                        { "class1": "ClassQ", "class2": "ClassG", "callCount": 1,  "rating": 0.8 },
-                       { "class1": "ClassG", "class2": "ClassD", "callCount": 4,  "rating": 1 },
+                       { "class1": "ClassG", "class2": "ClassD", "callCount": 4,  "rating": 1   },
                        { "class1": "ClassZ", "class2": "ClassR", "callCount": 65, "rating": 0.6 },
                        { "class1": "ClassY", "class2": "ClassG", "callCount": 4,  "rating": 0.8 },
-                       { "class1": "ClassM", "class2": "ClassF", "callCount": 3,  "rating": 0.2 }];
+                       { "class1": "ClassM", "class2": "ClassF", "callCount": 3,  "rating": 0.2 },
+                       { "class1": "ClassO", "class2": "ClassF", "callCount": 3,  "rating": 0.2 },
+                       { "class1": "ClassX", "class2": "ClassZ", "callCount": 3,  "rating": 0.2 },
+                       { "class1": "ClassP", "class2": "ClassY", "callCount": 3,  "rating": 0.2 },
+                       { "class1": "ClassV", "class2": "ClassA", "callCount": 3,  "rating": 0.2 },
+                       { "class1": "ClassN", "class2": "ClassT", "callCount": 3,  "rating": 0.2 }];
 
 // Sort data by system name and period
 dynamicData.sort(function(a, b) {
@@ -160,7 +176,7 @@ var tooltip = d3.select("body")
   .style("visibility", "hidden")
   .style("color", "white")
   .style("font-family", "monaco,Consolas,\"Lucida Console\",monospace")
-  .style("font-size", "14px")
+  .style("font-size", "13px")
   .style("font-style", "italic");
 
 var system = d3.select("body")
@@ -183,16 +199,16 @@ orbit_svg.append("g")
       .attr("cx", function (d) { return d.origin_x; })
       .attr("cy", function (d) { return d.origin_y; })
       .attr("r", function (d) { return d.number * 20; })
-      .on("mouseover", function(d){ return tooltip.style(prefix + "animation-name", "pulse")
+      .on("mouseover", function(d){ return tooltip.style(prefix + "animation-name", "glow")
                                                   .style(prefix + "animation-iteration-count", "infinite")
-                                                  .style(prefix + "animation-timing-function", "linear")
-                                                  .style(prefix + "animation-duration", "3s")
+                                                  .style(prefix + "animation-timing-function", "ease-in-out")
+                                                  .style(prefix + "animation-duration", "2s")
                                                   .style("visibility", "visible")
-                                                  .html("Package: " + d.package + "<BR>" + "Class: " + d.title); 
+                                                  .style("text-align", "left")
+                                                  .html("Class: " + d.title + "<BR>Package: " + d.package); 
                                   })
       .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
-      .on("mouseout", function(){ return tooltip.style("visibility", "hidden"); 
-});
+      .on("mouseout", function(){ return tooltip.style("visibility", "hidden"); });
 
 system.selectAll(".planet")
       .data(dynamicData)
@@ -208,15 +224,41 @@ system.selectAll(".planet")
       .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
       .attr("r", function(d) { return d.planet_radius; });
 
-// Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
-orbit_svg.selectAll(".path")
-  .data(dependency_data)
-  .enter().append("path")
-  .attr("class", "dependencyLine")
-  .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) })
-  .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
-  .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
-  .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
+//a group to hold each path line and its mouseover area
+var path_group = orbit_svg.selectAll(".path")
+      .data(dependency_data)
+      .enter()
+      .append("g");
+
+//Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
+path_group.each(function(d) {
+    selection = d3.select(this);
+    
+    //Path line - the actual path line drawn
+    var path = selection.append("path")
+        .attr("class", "dependencyLine")
+        .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) });
+
+    // Path's "shadow" or area that can be mouseover'd
+    var pathShadow = selection.append("path")
+        .attr("class", "dependencyPath")
+        .attr("d", function(d) {return createDependencyPath(d.class1, d.class2) })
+        .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
+        .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
+        .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
+});
+
+path_group.on("mouseover", function(d) {
+    d3.select(this).select(".dependencyLine")
+      .style("stroke", "#25D01F")
+      .style(prefix + "animation-name","glowin")
+      .style(prefix + "animation-timing-function","ease-in-out")
+      .style(prefix + "animation-duration","1s");
+}).on("mouseout", function(d) {
+    d3.select(this).select(".dependencyLine")
+      .style("stroke", "#121212")
+      .transition().duration(1000);
+});
 
 // Given two elements, builds a dependency path between them.
 function createDependencyPath(elementA, elementB) {
