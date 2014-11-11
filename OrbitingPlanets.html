@@ -124,7 +124,6 @@ body {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-// var csvDynamicData;
 
 var dynamicData = [{ "origin_x": 200,  "origin_y": 200, "number": 5, "planet_radius": 10,  "period": 4.6, "package": "1", "title": "ClassA" },
                    { "origin_x": 200,  "origin_y": 200, "number": 4, "planet_radius": 4,   "period": 3,   "package": "1", "title": "ClassT" },
@@ -181,7 +180,7 @@ var tooltip = d3.select("body")
   .style("font-size", "13px")
   .style("font-style", "italic");
 
-// Using CSV data
+// Using CSV data to draw orbits and planets
 d3.csv("dynamicData.csv", function(rows) {
 
     // need to turn strings into ints or else program will not run
@@ -244,9 +243,21 @@ d3.csv("dynamicData.csv", function(rows) {
           .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
           .attr("r", function(d) { return d.planet_radius; });
 
-    //a group to hold each path line and its mouseover area
-    var path_group = orbit_svg.selectAll(".path")
-          .data(dependency_data)
+});
+
+// Using csv data from second file to draw dependency lines
+d3.csv("dependencyData.csv", function(rows){
+
+    rows.forEach(function(d){
+        d.callCount = +d.callCount;
+        d.rating = +d.rating;
+    });
+
+    var csvDependencyData = rows;
+
+        //a group to hold each path line and its mouseover area
+    var path_group = d3.select(".orbit").selectAll(".path")
+          .data(csvDependencyData)
           .enter()
           .append("g");
 
@@ -280,44 +291,45 @@ d3.csv("dynamicData.csv", function(rows) {
           .transition().duration(1000);
     });
 
-    // Given two elements, builds a dependency path between them.
-    function createDependencyPath(elementA, elementB) {
-      return "M" + getElementXCoordinate(elementA) + "," + (getElementYCoordinate(elementA) - getElementRadius(elementA)) + " Q" + (((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 2) + 50) + "," + ((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 16) + " " + getElementXCoordinate(elementB) + "," + (getElementYCoordinate(elementB) - getElementRadius(elementB));
-    }
-
-    // Converts a polar Y coordinate location to a cartesian point.
-    function polarToCartesianY(centre_y, radius, degreeAngle) {
-      var radianAngle = degreeAngle * Math.PI / 180.0;
-      var y = centre_y + radius * Math.sin(radianAngle);
-      return y
-    };
-
-    // Converts a polar X coordinate location to a cartesian point.
-    function polarToCartesianX(centre_x, radius, degreeAngle) {
-      var radianAngle = degreeAngle * Math.PI / 180.0;
-      var x = centre_x + radius * Math.cos(radianAngle);
-      return x
-    };
-
-    // Return the origin X coordinate for the specified DOM element.
-    function getElementXCoordinate(element) {
-      var elem = document.getElementById(element);
-      return elem.cx.baseVal.value
-    }
-
-    // Returns the origin Y coordinate for the specified DOM element.
-    function getElementYCoordinate(element) {
-      var elem = document.getElementById(element);
-      return elem.cy.baseVal.value
-    }
-
-    // Returns the radius for the specified circle element.
-    function getElementRadius(element) {
-      var elem = document.getElementById(element);
-      return elem.r.baseVal.value;
-    }
 
 });
+
+// Given two elements, builds a dependency path between them.
+function createDependencyPath(elementA, elementB) {
+  return "M" + getElementXCoordinate(elementA) + "," + (getElementYCoordinate(elementA) - getElementRadius(elementA)) + " Q" + (((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 2) + 50) + "," + ((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 16) + " " + getElementXCoordinate(elementB) + "," + (getElementYCoordinate(elementB) - getElementRadius(elementB));
+}
+
+// Converts a polar Y coordinate location to a cartesian point.
+function polarToCartesianY(centre_y, radius, degreeAngle) {
+  var radianAngle = degreeAngle * Math.PI / 180.0;
+  var y = centre_y + radius * Math.sin(radianAngle);
+  return y
+};
+
+// Converts a polar X coordinate location to a cartesian point.
+function polarToCartesianX(centre_x, radius, degreeAngle) {
+  var radianAngle = degreeAngle * Math.PI / 180.0;
+  var x = centre_x + radius * Math.cos(radianAngle);
+  return x
+};
+
+// Return the origin X coordinate for the specified DOM element.
+function getElementXCoordinate(element) {
+  var elem = document.getElementById(element);
+  return elem.cx.baseVal.value
+}
+
+// Returns the origin Y coordinate for the specified DOM element.
+function getElementYCoordinate(element) {
+  var elem = document.getElementById(element);
+  return elem.cy.baseVal.value
+}
+
+// Returns the radius for the specified circle element.
+function getElementRadius(element) {
+  var elem = document.getElementById(element);
+  return elem.r.baseVal.value;
+}
 
 
 </script>
