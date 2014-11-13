@@ -38,6 +38,7 @@ body {
 .dependencyLine {
   fill: none;
   stroke: #121212;
+  opacity: 0;
 }
 
 .dependencyLine:hover {
@@ -124,6 +125,7 @@ body {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
+var csvDependencyData;
 
 var dynamicData = [{ "origin_x": 200,  "origin_y": 200, "number": 5, "planet_radius": 10,  "period": 4.6, "package": "1", "title": "ClassA" },
                    { "origin_x": 200,  "origin_y": 200, "number": 4, "planet_radius": 4,   "period": 3,   "package": "1", "title": "ClassT" },
@@ -243,56 +245,80 @@ d3.csv("dynamicData.csv", function(rows) {
           .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
           .attr("r", function(d) { return d.planet_radius; });
 
+    // Using csv data from second file to draw dependency lines
+    d3.csv("dependencyData.csv", function(rows){
+
+        rows.forEach(function(d){
+            d.callCount = +d.callCount;
+            d.rating = +d.rating;
+        });
+
+        csvDependencyData = rows;
+
+            //a group to hold each path line and its mouseover area
+        var path_group = d3.select(".orbit").selectAll(".path")
+              .data(csvDependencyData)
+              .enter()
+              .append("g");
+
+        //Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
+        path_group.each(function(d) {
+            selection = d3.select(this);
+            
+            //Path line - the actual path line drawn
+            var path = selection.append("path")
+                .attr("class", "dependencyLine")
+                .attr("subclass", d.class1)
+                .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) });
+
+            // Path's "shadow" or area that can be mouseover'd
+            var pathShadow = selection.append("path")
+                .attr("class", "dependencyPath")
+                .attr("d", function(d) {return createDependencyPath(d.class1, d.class2) })
+                .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
+                .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
+                .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
+        });
+
+        // path_group.on("mouseover", function(d) {
+        //     d3.select(this).select(".dependencyLine")
+        //       .style("stroke", "#25D01F")
+        //       .style(prefix + "animation-name","glowin")
+        //       .style(prefix + "animation-timing-function","ease-in-out")
+        //       .style(prefix + "animation-duration","1s");
+        // }).on("mouseout", function(d) {
+        //     d3.select(this).select(".dependencyLine")
+        //       .style("stroke", "#121212")
+        //       .transition().duration(1000);
+        // });
+
+
+    d3.selectAll(".circle")
+        .on("mouseover", function(d){
+            console.log("[subclass=" + d.title + "]");
+            d3.selectAll("[subclass=" + d.title + "]")
+                .style("opacity", 0.9)
+                .style("stroke", "green");
+            return tooltip.style(prefix + "animation-name", "glow")
+                                                      .style(prefix + "animation-iteration-count", "infinite")
+                                                      .style(prefix + "animation-timing-function", "ease-in-out")
+                                                      .style(prefix + "animation-duration", "2s")
+                                                      .style("visibility", "visible")
+                                                      .style("text-align", "left")
+                                                      .html("Class: " + d.title + "<BR>Package: " + d.package); 
+        }).on("mouseout", function(d) {
+            d3.selectAll("[subclass=" + d.title + "]")
+              .style("opacity", 0)
+              .style("stroke", "#121212")
+              .transition().duration(1000);
+            return tooltip.style("visibility", "hidden");
+        })
+
+    });
+
 });
 
-// Using csv data from second file to draw dependency lines
-d3.csv("dependencyData.csv", function(rows){
 
-    rows.forEach(function(d){
-        d.callCount = +d.callCount;
-        d.rating = +d.rating;
-    });
-
-    var csvDependencyData = rows;
-
-        //a group to hold each path line and its mouseover area
-    var path_group = d3.select(".orbit").selectAll(".path")
-          .data(csvDependencyData)
-          .enter()
-          .append("g");
-
-    //Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
-    path_group.each(function(d) {
-        selection = d3.select(this);
-        
-        //Path line - the actual path line drawn
-        var path = selection.append("path")
-            .attr("class", "dependencyLine")
-            .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) });
-
-        // Path's "shadow" or area that can be mouseover'd
-        var pathShadow = selection.append("path")
-            .attr("class", "dependencyPath")
-            .attr("d", function(d) {return createDependencyPath(d.class1, d.class2) })
-            .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
-            .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
-            .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
-    });
-
-    path_group.on("mouseover", function(d) {
-        d3.select(this).select(".dependencyLine")
-          .style("stroke", "#25D01F")
-          .style(prefix + "animation-name","glowin")
-          .style(prefix + "animation-timing-function","ease-in-out")
-          .style(prefix + "animation-duration","1s");
-    }).on("mouseout", function(d) {
-        d3.select(this).select(".dependencyLine")
-          .style("stroke", "#121212")
-          .transition().duration(1000);
-    });
-
-
-});
 
 // Given two elements, builds a dependency path between them.
 function createDependencyPath(elementA, elementB) {
