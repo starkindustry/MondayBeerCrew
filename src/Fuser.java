@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -19,6 +20,12 @@ public class Fuser {
 
 		Set<String> codeBase1SM = linesOfCodeMap.keySet();
 		Set<String> codeBase1DF = depMap.keySet();
+		List<String> fullNameList = new ArrayList<String>();
+		for (String s : codeBase1SM){
+			if (codeBase1DF.contains(s)){
+				fullNameList.add(depMap.get(s).getFullName());
+			}
+		}
 
 		for (String s : codeBase1SM) {
 			if (codeBase1DF.contains(s)){
@@ -31,6 +38,16 @@ public class Fuser {
 				codeBase1Results.add(aKlass);
 			}
 		}
+		
+		for (Klass c : codeBase1Results) {
+			List<String> deps = c.getOutDependencies(); 
+			if (deps.retainAll(fullNameList)) {
+				c.setDependencies(deps);
+			}
+		}
+		
+		
+		
 		System.out.println("Code base 1 results: ");
 		printClasses(codeBase1Results);
 		
@@ -43,6 +60,12 @@ public class Fuser {
 
 		Set<String> codeBase2SM = linesOfCodeMap2.keySet();
 		Set<String> codeBase2DF = depMap2.keySet();
+		List<String> fullNameList2 = new ArrayList<String>();
+		for (String s : codeBase2SM){
+			if (codeBase2DF.contains(s)){
+				fullNameList2.add(depMap2.get(s).getFullName());
+			}
+		}
 
 		for (String s : codeBase2SM) {
 			if (codeBase2DF.contains(s)){
@@ -55,6 +78,15 @@ public class Fuser {
 				codeBase2Results.add(aKlass);
 			}
 		}
+		
+		for (Klass c : codeBase2Results) {
+			List<String> deps = c.getOutDependencies(); 
+			if (deps.retainAll(fullNameList2)) {
+				c.setDependencies(deps);
+			}
+		}
+		
+		
 		System.out.println("\nCode base 2 results: ");
 		printClasses(codeBase2Results);
 
@@ -64,7 +96,7 @@ public class Fuser {
 		System.out.println("Total classes: " + classes.size());
 		System.out.println("--------------------------------");
 		for (int i = 0; i < classes.size(); i++){
-			System.out.println((i+1) + ". " + "Class name: " + classes.get(i).getFullName());
+			System.out.println((i+1) + ". " + "\nClass name: " + classes.get(i).getFullName());
 			System.out.println("Package name: " + classes.get(i).getPackageName());
 			System.out.println("Size: " + classes.get(i).getLinesOfCode());
 			System.out.println("Complexity: " + classes.get(i).getComplexityScore());
