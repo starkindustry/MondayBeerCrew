@@ -272,12 +272,12 @@ d3.csv("dynamicData.csv", function(rows) {
                 .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) });
 
             // Path's "shadow" or area that can be mouseover'd
-            var pathShadow = selection.append("path")
-                .attr("class", "dependencyPath")
-                .attr("d", function(d) {return createDependencyPath(d.class1, d.class2) })
-                .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
-                .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
-                .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
+            // var pathShadow = selection.append("path")
+            //     .attr("class", "dependencyPath")
+            //     .attr("d", function(d) {return createDependencyPath(d.class1, d.class2) })
+            //     .on("mouseover", function(d){ return tooltip.style("visibility", "visible").html("Dependency: " + d.class2 + " depends on " + d.class1 + "<BR>" + "Reference Count: " + 32 + "<BR>" + "Coupling Rating: " + "46%"); })
+            //     .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
+            //     .on("mouseout", function(){ return tooltip.style("visibility", "hidden") });
         });
 
         // path_group.on("mouseover", function(d) {
