@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 public class Fuser {
 	private static List<Klass> codeBase1Results = new ArrayList<Klass>();
 	private static List<Klass> codeBase2Results = new ArrayList<Klass>();
@@ -29,6 +28,26 @@ public class Fuser {
 				aKlass.setPackageName(depMap.get(s).getPackageName());
 				aKlass.setDependencies(depMap.get(s).getOutDependencies());
 				codeBase1Results.add(aKlass);
+			}
+		}
+		
+		// Parse code base results into Package objects
+		List<Package> packages = new ArrayList<Package>();
+		for (Klass k : codeBase1Results) {
+			if (packages.isEmpty() || !isPackageInPackages(k.getPackageName(), packages)) {
+				Package pkge = new Package(k.getPackageName());
+				pkge.addKlass(k);
+				packages.add(pkge);
+			} else {
+				addKlassToPackage(k, packages);
+			}
+		}
+		
+		// Print out the created Package objects
+		for (Package p : packages) {
+			System.out.println("Package: " + p.getName());
+			for (Klass k : p.getKlasses()) {
+				System.out.println(k.getName());
 			}
 		}
 		System.out.println("Code base 1 results: ");
@@ -58,9 +77,17 @@ public class Fuser {
 				codeBase2Results.add(aKlass);
 			}
 		}
-		System.out.println("\nCode base 2 results: ");
+//		System.out.println("\nCode base 2 results: ");
 //		printClasses(codeBase2Results);
 
+	}
+
+	private static void addKlassToPackage(Klass klass, List<Package> packages) {
+		for (Package p : packages) {
+			if (p.getName().equals(klass.getPackageName())) {
+				p.addKlass(klass);
+			}
+		}
 	}
 
 	public static void printClasses(List<Klass> classes) {
@@ -77,6 +104,15 @@ public class Fuser {
 				System.out.println(s);
 			System.out.println("--------------------------------");
 		}	
+	}
+	
+	public static boolean isPackageInPackages(String name, List<Package> packages) {
+		for (Package p : packages) {
+			if (p.getName().equals(name)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
