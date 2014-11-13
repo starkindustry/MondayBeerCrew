@@ -34,6 +34,9 @@ public class Fuser {
 		System.out.println("Code base 1 results: ");
 		printClasses(codeBase1Results);
 		
+		// ===============================================================================================
+		
+		
 		CSVParserSM csvReader2 = new CSVParserSM();
 		Map<String, String> linesOfCodeMap2 = csvReader2.mapSmCSV("Result XMLs/SMPetFinderDetails.csv", 4);
 		Map<String, String> complexityMap2 = csvReader2.mapSmCSV("Result XMLs/SMPetFinderDetails.csv", 14);
@@ -56,7 +59,7 @@ public class Fuser {
 			}
 		}
 		System.out.println("\nCode base 2 results: ");
-		printClasses(codeBase2Results);
+//		printClasses(codeBase2Results);
 
 	}
 
