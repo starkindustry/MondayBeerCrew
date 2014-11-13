@@ -61,7 +61,7 @@ public class XMLParser {
 								&& !dep.contains(".event.")) 	// Do not include event related dependencies
 							outbounds.add(dep);
 					}					
-					Klass theClass = new Klass(className, packageName, outbounds);
+					Klass theClass = new Klass(className, fullyQualifiedClassName, packageName, outbounds);
 					classList.put(theClass.getName(), theClass);
 				}
 			}

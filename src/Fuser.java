@@ -23,6 +23,7 @@ public class Fuser {
 		for (String s : codeBase1SM) {
 			if (codeBase1DF.contains(s)){
 				Klass aKlass = new Klass(s);
+				aKlass.setFullName(depMap.get(s).getFullName());
 				aKlass.setLinesOfCode(linesOfCodeMap.get(s));
 				aKlass.setComplexityScore(complexityMap.get(s));
 				aKlass.setPackageName(depMap.get(s).getPackageName());
@@ -46,6 +47,7 @@ public class Fuser {
 		for (String s : codeBase2SM) {
 			if (codeBase2DF.contains(s)){
 				Klass aKlass = new Klass(s);
+				aKlass.setFullName(depMap2.get(s).getFullName());
 				aKlass.setLinesOfCode(linesOfCodeMap2.get(s));
 				aKlass.setComplexityScore(complexityMap2.get(s));
 				aKlass.setPackageName(depMap2.get(s).getPackageName());
@@ -62,7 +64,7 @@ public class Fuser {
 		System.out.println("Total classes: " + classes.size());
 		System.out.println("--------------------------------");
 		for (int i = 0; i < classes.size(); i++){
-			System.out.println((i+1) + ". " + "Class name: " + classes.get(i).getName());
+			System.out.println((i+1) + ". " + "Class name: " + classes.get(i).getFullName());
 			System.out.println("Package name: " + classes.get(i).getPackageName());
 			System.out.println("Size: " + classes.get(i).getLinesOfCode());
 			System.out.println("Complexity: " + classes.get(i).getComplexityScore());

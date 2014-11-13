@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Klass {
 	private String name;
+	private String fullyQualifiedName;
 	private String packageName;
 	private List<String> outDependencies;
 	private String linesOfCode;
@@ -13,8 +14,9 @@ public class Klass {
 		this.name = name;
 	}
 	
-	public Klass(String name, String packageName, List<String> out){
+	public Klass(String name, String fullName, String packageName, List<String> out){
 		this.name = name;
+		this.fullyQualifiedName = fullName;
 		this.packageName = packageName;
 		this.outDependencies = out;
 	}
@@ -61,5 +63,13 @@ public class Klass {
 	
 	public String getComplexityScore() {
 		return this.complexityScore;
+	}
+
+	public String getFullName() {
+		return this.fullyQualifiedName;
+	}
+	
+	public void setFullName(String fullName) {
+		this.fullyQualifiedName = fullName;
 	}
 }
