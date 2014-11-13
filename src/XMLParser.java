@@ -8,10 +8,12 @@ import org.w3c.dom.Element;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class XMLParser {
-	private  List<Klass> classList = new ArrayList<Klass>();
+	private  Map<String,Klass> classList = new HashMap<String,Klass>();
 	// code stolen from http://www.mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/  
 	public XMLParser(String filePath) {
 		try {
@@ -45,7 +47,8 @@ public class XMLParser {
 					Element classElement = (Element) currClass;
 
 					//class name
-					String className = classElement.getElementsByTagName("name").item(0).getTextContent();
+					String fullyQualifiedClassName = classElement.getElementsByTagName("name").item(0).getTextContent();
+					String className = fullyQualifiedClassName.replace(packageName + ".","") + ".java";
 
 					NodeList outboundChildNodes = classElement.getElementsByTagName("outbound");				
 
@@ -53,13 +56,13 @@ public class XMLParser {
 					ArrayList<String> outbounds = new ArrayList<String>();
 					for (int j = 0; j < outboundChildNodes.getLength(); j++){
 						String dep = classElement.getElementsByTagName("outbound").item(j).getTextContent();
-						if (!outbounds.contains(dep) 
+						if (!outbounds.contains(dep)
 								&& !dep.contains(".ui.") 		// Do not include UI-related dependencies
 								&& !dep.contains(".event.")) 	// Do not include event related dependencies
 							outbounds.add(dep);
 					}					
 					Klass theClass = new Klass(className, packageName, outbounds);
-					classList.add(theClass);
+					classList.put(theClass.getName(), theClass);
 				}
 			}
 		} catch (Exception e) {
@@ -81,7 +84,7 @@ public class XMLParser {
 		}	
 	}
 
-	public List<Klass> getClassList(){
+	public Map<String,Klass> getClassList(){
 		return this.classList;
 	}
 

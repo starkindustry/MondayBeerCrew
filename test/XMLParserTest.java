@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.*;
 
@@ -27,7 +28,7 @@ public class XMLParserTest {
 		
 		assertNotNull(parser);
 		
-		List<Klass> results = parser.getClassList();
+		Map<String,Klass> results = parser.getClassList();
 		assertTrue(results.size() == 0);
 		
 	}
@@ -48,7 +49,7 @@ public class XMLParserTest {
 		
 		assertNotNull(parser);
 		
-		List<Klass> results = parser.getClassList();
+		Map<String,Klass> results = parser.getClassList();
 		assertTrue(results.size() == 3);
 		assertTrue(results.get(0).getName().equals("Mozzarella"));
 		assertTrue(results.get(0).getPackageName().equals("test1"));

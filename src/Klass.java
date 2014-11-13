@@ -4,43 +4,59 @@ import java.util.List;
 public class Klass {
 	private String name;
 	private String packageName;
-//	private List<String> inDependencies;
 	private List<String> outDependencies;
 	private String linesOfCode;
 	private String complexityScore;
-	
+
+
+	public Klass(String name){
+		this.name = name;
+	}
 	
 	public Klass(String name, String packageName, List<String> out){
-		
 		this.name = name;
 		this.packageName = packageName;
-//		this.inDependencies = in;
 		this.outDependencies = out;
-		/** 
-		 * TODO: implement loc and complexity score to klass
-		this.linesOfcode = loc;
+	}
+
+	public Klass(String name, String packageName, List<String> out, String loc, String complexScore){
+		this.name = name;
+		this.packageName = packageName;
+		this.outDependencies = out;
+		this.linesOfCode = loc;
 		this.complexityScore = complexScore;
-		*/
 	}
 	
 	public String getName(){
 		return this.name;
 	}
+
+	public void setPackageName(String packageName){
+		this.packageName = packageName;
+	}
 	
 	public String getPackageName(){
 		return this.packageName;
 	}
-	
-//	public List<String> getInDependencies(){
-//		return this.inDependencies;
-//	}
+
+	public void setDependencies(List<String> dependencies){
+		this.outDependencies = dependencies;
+	}
 	
 	public List<String> getOutDependencies(){
 		return this.outDependencies;
 	}
 	
+	public void setLinesOfCode(String loc) {
+		this.linesOfCode = loc;
+	}
+	
 	public String getLinesOfCode() {
 		return this.linesOfCode;
+	}
+
+	public void setComplexityScore(String comp) {
+		this.complexityScore = comp;
 	}
 	
 	public String getComplexityScore() {

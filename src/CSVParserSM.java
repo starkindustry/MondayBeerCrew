@@ -22,7 +22,7 @@ public class CSVParserSM {
 				
 			}
 			for (Map.Entry<String, String> entry : metric.entrySet()) {
-				System.out.println(entry.getKey() + ", " + entry.getValue());
+//				System.out.println(entry.getKey() + ", " + entry.getValue());
 			};
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
