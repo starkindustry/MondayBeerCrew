@@ -12,7 +12,7 @@ public class Package {
 		this.klasses = new ArrayList<Klass>();
 	}
 	
-	public int getSize() {
+	public int size() {
 		return klasses.size();
 	}
 	
@@ -26,5 +26,9 @@ public class Package {
 	
 	public void addKlass(Klass klass) {
 		klasses.add(klass);
+	}
+	
+	public int getDiameter() {
+		return size() * 30;
 	}
 }

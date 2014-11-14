@@ -6,6 +6,9 @@ import java.util.Set;
 public class Fuser {
 	private static List<Klass> codeBase1Results = new ArrayList<Klass>();
 	private static List<Klass> codeBase2Results = new ArrayList<Klass>();
+	private static final int SVG_BACKGROUND_WIDTH = 1500;
+	private static final int ORBIT_PADDING = 15;
+	private static final int SVG_PADDING = 25;
 
 	public static void main(String[] args) {
 
@@ -50,8 +53,44 @@ public class Fuser {
 				System.out.println(k.getName());
 			}
 		}
-		System.out.println("Code base 1 results: ");
-		printClasses(codeBase1Results);
+		
+		List<VisualizationRow> rows = new ArrayList<VisualizationRow>();
+		while (!packages.isEmpty()) {
+			if (packages.size() >= 3 && (packages.get(0).size() * ORBIT_PADDING * 2 + packages.get(1).size() * ORBIT_PADDING * 2 + packages.get(2).size() * ORBIT_PADDING * 2) < SVG_BACKGROUND_WIDTH) {
+				VisualizationRow row = new VisualizationRow();
+				row.addPackage(packages.get(0));
+				row.addPackage(packages.get(1));
+				row.addPackage(packages.get(2));
+				rows.add(row);
+				packages.remove(2);
+				packages.remove(1);
+				packages.remove(0);
+			} else if (packages.size() >= 2 && (packages.get(0).size() * ORBIT_PADDING * 2 + packages.get(1).size() * ORBIT_PADDING * 2) < SVG_BACKGROUND_WIDTH) {
+				VisualizationRow row = new VisualizationRow();
+				row.addPackage(packages.get(0));
+				row.addPackage(packages.get(1));
+				rows.add(row);
+				packages.remove(1);
+				packages.remove(0);
+			} else if (packages.size() >= 1 && (packages.get(0).size() * ORBIT_PADDING * 2) < SVG_BACKGROUND_WIDTH) {
+				VisualizationRow row = new VisualizationRow();
+				row.addPackage(packages.get(0));
+				rows.add(row);
+				packages.remove(0);
+			}
+		}
+		int previousRowY = 0;
+		for (VisualizationRow row : rows) {
+			int yValue = row.getLargestOrbit() + SVG_PADDING + previousRowY;
+			row.setY(yValue - row.getLargestOrbit() / 2);
+			previousRowY = yValue;
+			System.out.println(previousRowY);
+		}
+		
+		
+		
+//		System.out.println("Code base 1 results: ");
+//		printClasses(codeBase1Results);
 		
 		// ===============================================================================================
 		
@@ -111,6 +150,19 @@ public class Fuser {
 			if (p.getName().equals(name)) {
 				return true;
 			}
+		}
+		return false;
+	}
+	
+	private static boolean checkSizeIsValid(List<Package> packages, int pkgeCount) {
+		int largestOrbit = 0;
+		for (Package p : packages) {
+			if (p.getDiameter() > largestOrbit) {
+				largestOrbit = p.getDiameter();
+			}
+		}
+		if (largestOrbit < SVG_BACKGROUND_WIDTH / pkgeCount) {
+			return true;
 		}
 		return false;
 	}
