@@ -5,14 +5,25 @@ import java.util.List;
 public class VisualizationRow {
 
 	private int y;
-	private final int rowCount;
+	private int[] x;
 	private final List<Package> packages;
 	
 	public VisualizationRow(int rowCount) {
 		this.packages = new ArrayList<Package>();
-		this.rowCount = rowCount;
+		this.x = new int[rowCount];
+		setXCoordinates();
 	}
 	
+	private void setXCoordinates() {
+		if (x.length == 3) {
+			x = new int[] {250, 750, 1250};
+		} else if (x.length == 2) {
+			x = new int[] {500, 1000};
+		} else if (x.length == 1) {
+			x = new int[] {750};
+		}
+	}
+
 	public void addPackage(Package pkge) {
 		packages.add(pkge);
 	}
@@ -38,8 +49,8 @@ public class VisualizationRow {
 	public List<Package> getPackages() {
 		return packages;
 	}
-	
-	public int getRowCount() {
-		return rowCount;
+
+	public int[] getX() {
+		return x;
 	}
 }

@@ -50,25 +50,22 @@ public class Fuser {
 				
 		calculatePackageCoords();
 		
+		// Prints our beautiful .csv data
+		int i = 0;
+		int j = 1;
 		for (VisualizationRow vr : visRows) {
-			System.out.println("-=== Visualization Row ===-");
-			System.out.println("Origin Y: " + vr.getY());
 			for (Package p : vr.getPackages()) {
-				System.out.println("-=== Packages ====- ");
-				System.out.println("Package Name: " + p.getName());
 				for (Klass k : p.getKlasses()) {
-					System.out.println("-=== Klasses ===-");
-					System.out.println("Name: " + k.getName());
-					System.out.println("Size: " + k.getLinesOfCode());
-					System.out.println("Complexity: " + k.getComplexityScore());
-					System.out.println("Dependencies: ");
-					for (String dep : k.getOutDependencies()) {
-						System.out.println(dep);
-					}
+					System.out.println(vr.getX()[i] + "," + vr.getY() + "," + j + "," + k.getLinesOfCode() + "," + k.getComplexityScore() + "," + k.getPackageName() + "," + k.getName());
+					j++;
 				}
+				j = 0;
+				i++;
 			}
+			i = 0;
 		}
-		
+	
+
 //		System.out.println("Code base 1 results: ");
 //		printClasses(codeBase1Results);
 		
