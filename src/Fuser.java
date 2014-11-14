@@ -5,10 +5,6 @@ import java.util.Set;
 
 public class Fuser {
 	
-	private static final int SVG_BACKGROUND_WIDTH = 1500;
-	private static final int ORBIT_PADDING = 15;
-	private static final int SVG_PADDING = 25;
-	
 	private static List<Klass> codeBase1Results = new ArrayList<Klass>();
 	private static List<Klass> codeBase2Results = new ArrayList<Klass>();
 	
@@ -51,11 +47,13 @@ public class Fuser {
 			}
 		}
 		
-		// Print out the created Package objects
+		// For DEBUG: Print out the created Package objects
 		for (Package p : packages) {
-			System.out.println("Package: " + p.getName());
+			int classCount = 1;
+			System.out.println("-===Package==-: " + p.getName());
 			for (Klass k : p.getKlasses()) {
-				System.out.println(k.getName());
+				System.out.println(classCount + ")" + k.getName());
+				classCount++;
 			}
 		}
 		
@@ -102,7 +100,6 @@ public class Fuser {
 		VisualizationRowBuilder visRowBuilder = new VisualizationRowBuilder();
 		visRows = visRowBuilder.populateVisRows(visRows, packages);
 		visRowBuilder.setYValues(visRows);
-		
 	}
 
 	private static void addKlassToPackage(Klass klass, List<Package> packages) {
