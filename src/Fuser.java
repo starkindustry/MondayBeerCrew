@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +59,13 @@ public class Fuser {
 		for (VisualizationRow vr : visRows) {
 			for (Package p : vr.getPackages()) {
 				for (Klass k : p.getKlasses()) {
-					System.out.println(vr.getX()[i] + "," + vr.getY() + "," + j + "," + k.getLinesOfCode() + "," + k.getComplexityScore() + "," + k.getPackageName() + "," + k.getName());
+					System.out.println(vr.getX()[i] + "," 
+							+ vr.getY() + "," 
+							+ j + "," 
+							+ k.getLinesOfCode() + "," 
+							+ k.getComplexityScore() + "," 
+							+ k.getPackageName() + "," 
+							+ k.getName());
 					j++;
 				}
 				j = 0;
@@ -64,6 +73,9 @@ public class Fuser {
 			}
 			i = 0;
 		}
+		
+		generateOrbitalCSV(visRows);
+		
 	
 
 //		System.out.println("Code base 1 results: ");
@@ -107,7 +119,60 @@ public class Fuser {
 		visRows = visRowBuilder.populateVisRows(visRows, packages);
 		visRowBuilder.setYValues(visRows);
 	}
-
+/*
+	// Prints our beautiful .csv data
+			int i = 0;
+			int j = 1;
+			for (VisualizationRow vr : visRows) {
+				for (Package p : vr.getPackages()) {
+					for (Klass k : p.getKlasses()) {
+						System.out.println(vr.getX()[i] + "," 
+								+ vr.getY() + "," 
+								+ j + "," 
+								+ k.getLinesOfCode() + "," 
+								+ k.getComplexityScore() + "," 
+								+ k.getPackageName() + "," 
+								+ k.getName());
+						j++;
+					}
+					j = 0;
+					i++;
+				}
+				i = 0;
+			}
+			*/
+	private static void generateOrbitalCSV(List<VisualizationRow> rows) {
+		try {
+			File file = new File("../KevinsFuckingCSV.csv");
+			FileWriter writer = new FileWriter(file);
+			
+			writer.append("origin_x,origin_y,number,planet_radius,period,package,title\n");
+			int i = 0;
+			int j = 1;
+			for (VisualizationRow vr : visRows) {
+				for (Package p : vr.getPackages()) {
+					for (Klass k : p.getKlasses()) {
+						writer.append(vr.getX()[i] + "," 
+								+ vr.getY() + "," 
+								+ j + "," 
+								+ k.getLinesOfCode() + "," 
+								+ k.getComplexityScore() + "," 
+								+ k.getPackageName() + "," 
+								+ k.getName() + "\n");
+						j++;
+					}
+					j = 0;
+					i++;
+				}
+				i = 0;
+			}
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	public static void printClasses(List<Klass> classes) {
 		System.out.println("Total classes: " + classes.size());
