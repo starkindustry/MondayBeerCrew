@@ -5,10 +5,12 @@ import java.util.List;
 public class VisualizationRow {
 
 	private int y;
+	private final int rowCount;
 	private final List<Package> packages;
 	
-	public VisualizationRow() {
+	public VisualizationRow(int rowCount) {
 		this.packages = new ArrayList<Package>();
+		this.rowCount = rowCount;
 	}
 	
 	public void addPackage(Package pkge) {
@@ -27,5 +29,17 @@ public class VisualizationRow {
 	
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public List<Package> getPackages() {
+		return packages;
+	}
+	
+	public int getRowCount() {
+		return rowCount;
 	}
 }

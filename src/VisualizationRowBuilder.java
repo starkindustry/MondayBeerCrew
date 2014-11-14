@@ -30,7 +30,6 @@ public class VisualizationRowBuilder {
 			int yValue = row.getLargestOrbit() + SVG_PADDING + previousRowY;
 			row.setY(yValue - row.getLargestOrbit() / 2);
 			previousRowY = yValue;
-			System.out.println(previousRowY);
 		}	
 	}
 
@@ -44,7 +43,7 @@ public class VisualizationRowBuilder {
 			// Will iterate through packages by PACKAGES_PER_ROW chunks, decreasing by 1 if any boolean checks failed
 			if (packages.size() >= rowCounter && isWithinBackgroundWidth(packages, rowCounter)
 					&& isWithinScreenQuadrant(packages, rowCounter)) {
-				VisualizationRow row = new VisualizationRow();
+				VisualizationRow row = new VisualizationRow(rowCounter);
 				row = populateRowByPackageSize(row, packages, rowCounter);
 				rows.add(row);
 				packages = removePopulatedPackages(packages, rowCounter);

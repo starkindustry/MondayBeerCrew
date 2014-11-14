@@ -31,4 +31,5 @@ public class Package {
 	public int getDiameter() {
 		return size() * 30;
 	}
+
 }

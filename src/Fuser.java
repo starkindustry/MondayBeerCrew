@@ -36,29 +36,38 @@ public class Fuser {
 		}
 		
 		// Parse code base results into Package objects
-		packages = new ArrayList<Package>();
-		for (Klass k : codeBase1Results) {
-			if (packages.isEmpty() || !isPackageInPackages(k.getPackageName(), packages)) {
-				Package pkge = new Package(k.getPackageName());
-				pkge.addKlass(k);
-				packages.add(pkge);
-			} else {
-				addKlassToPackage(k, packages);
-			}
-		}
+		packages = PackageBuilder.buildPackages(codeBase1Results);
 		
-		// For DEBUG: Print out the created Package objects
-		for (Package p : packages) {
-			int classCount = 1;
-			System.out.println("-===Package==-: " + p.getName());
-			for (Klass k : p.getKlasses()) {
-				System.out.println(classCount + ")" + k.getName());
-				classCount++;
-			}
-		}
-		
+//		// For DEBUG: Print out the created Package objects
+//		for (Package p : packages) {
+//			int classCount = 1;
+//			System.out.println("-===Package==-: " + p.getName());
+//			for (Klass k : p.getKlasses()) {
+//				System.out.println(classCount + ")" + k.getName());
+//				classCount++;
+//			}
+//		}
+				
 		calculatePackageCoords();
 		
+		for (VisualizationRow vr : visRows) {
+			System.out.println("-=== Visualization Row ===-");
+			System.out.println("Origin Y: " + vr.getY());
+			for (Package p : vr.getPackages()) {
+				System.out.println("-=== Packages ====- ");
+				System.out.println("Package Name: " + p.getName());
+				for (Klass k : p.getKlasses()) {
+					System.out.println("-=== Klasses ===-");
+					System.out.println("Name: " + k.getName());
+					System.out.println("Size: " + k.getLinesOfCode());
+					System.out.println("Complexity: " + k.getComplexityScore());
+					System.out.println("Dependencies: ");
+					for (String dep : k.getOutDependencies()) {
+						System.out.println(dep);
+					}
+				}
+			}
+		}
 		
 //		System.out.println("Code base 1 results: ");
 //		printClasses(codeBase1Results);
@@ -102,13 +111,6 @@ public class Fuser {
 		visRowBuilder.setYValues(visRows);
 	}
 
-	private static void addKlassToPackage(Klass klass, List<Package> packages) {
-		for (Package p : packages) {
-			if (p.getName().equals(klass.getPackageName())) {
-				p.addKlass(klass);
-			}
-		}
-	}
 
 	public static void printClasses(List<Klass> classes) {
 		System.out.println("Total classes: " + classes.size());
@@ -126,13 +128,6 @@ public class Fuser {
 		}	
 	}
 	
-	public static boolean isPackageInPackages(String name, List<Package> packages) {
-		for (Package p : packages) {
-			if (p.getName().equals(name)) {
-				return true;
-			}
-		}
-		return false;
-	}
+	
 
 }
