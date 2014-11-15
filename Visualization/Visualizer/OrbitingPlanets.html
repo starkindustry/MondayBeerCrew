@@ -127,6 +127,9 @@ body {
 
 var csvDependencyData;
 
+var r = d3.scale.linear().domain([0, 600]).range([0, 20]);
+var p = d3.scale.linear().domain([0, 10]).range([5, 50]);
+
 // Detect the appropriate vendor prefix.
 var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
     : "-moz-transform" in document.body.style ? "-moz-"
@@ -196,15 +199,15 @@ d3.csv("../../orbitData.csv", function(rows) {
           .data(csvDynamicData)
         .enter().append("svg")
           .attr("class", "planet")
-          .attr("width", function(d) { return d.planet_radius * 2; })
-          .attr("height", function(d) { return d.planet_radius * 2; })
-          .style("top", function(d) { return polarToCartesianY(d.origin_y, d.number * 20, 225) - d.planet_radius; })
-          .style("left", function(d) { return polarToCartesianX(d.origin_x, d.number * 20, 225) - d.planet_radius; })
-          .style(prefix + "animation-duration", function(d) { return d.period + "s"; }) // this governs how fast the planets orbit
-          .style(prefix + "transform-origin", function(d) { return (d.origin_y + d.planet_radius - polarToCartesianY(d.origin_y, d.number * 20, 225)) + "px " + (d.origin_x + d.planet_radius - polarToCartesianX(d.origin_x, d.number * 20, 225)) + "px"; })
+          .attr("width", function(d) { return r(d.planet_radius) * 2; })
+          .attr("height", function(d) { return r(d.planet_radius) * 2; })
+          .style("top", function(d) { return polarToCartesianY(d.origin_y, d.number * 20, 225) - r(d.planet_radius); })
+          .style("left", function(d) { return polarToCartesianX(d.origin_x, d.number * 20, 225) - r(d.planet_radius); })
+          .style(prefix + "animation-duration", function(d) { return p(d.period) + "s"; }) // this governs how fast the planets orbit
+          .style(prefix + "transform-origin", function(d) { return (d.origin_y + r(d.planet_radius) - polarToCartesianY(d.origin_y, d.number * 20, 225)) + "px " + (d.origin_x + r(d.planet_radius) - polarToCartesianX(d.origin_x, d.number * 20, 225)) + "px"; })
         .append("circle")
-          .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
-          .attr("r", function(d) { return d.planet_radius; });
+          .attr("transform", function(d) { return "translate(" + r(d.planet_radius) + "," + r(d.planet_radius) + ")"; })
+          .attr("r", function(d) { return r(d.planet_radius); });
 
     // Using csv data from second file to draw dependency lines
     d3.csv("../../dependencyData.csv", function(rows){
@@ -238,8 +241,8 @@ d3.csv("../../orbitData.csv", function(rows) {
         .on("mouseover", function(d){
             console.log("[subclass=" + d.title + "]");
             d3.selectAll("[subclass=" + d.title + "]")
-                .style("opacity", 0.9)
-                .style("stroke", "green");
+                .style("opacity", 1)
+                .style("stroke", "#25D01F");
             return tooltip.style(prefix + "animation-name", "glow")
                                                       .style(prefix + "animation-iteration-count", "infinite")
                                                       .style(prefix + "animation-timing-function", "ease-in-out")
