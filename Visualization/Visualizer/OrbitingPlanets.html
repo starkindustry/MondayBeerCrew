@@ -109,7 +109,7 @@ body {
 }
 
 @-webkit-keyframes glow {
-  0%,100% { text-shadow:0 0 10px #000;  }
+  0%,100% { text-shadow:0 0 10px #000; }
   50%     { text-shadow:0 0 10px #fff; }
 }
 
@@ -224,16 +224,20 @@ d3.csv("../../orbitData.csv", function(rows) {
             var path = selection.append("path")
                 .attr("class", "dependencyLine")
                 .attr("subclass", d.class_from)
-                .attr("d", function(d) { return createDependencyPath(d.class_from, d.class_to) });
+                .attr("d", function(d) { return createDependencyPath(d.class_from, d.class_to) })
+                .each(function(d) { d.totalLength = this.getTotalLength(); })
+                .style("stroke", "#25D01F")
+                .style("stroke-dasharray", d.totalLength + " " + d.totalLength)
+                .style("stroke-dashoffset", d.totalLength)
+                .style(prefix + "transition", "stroke-dashoffset 2s ease-in-out");
 
         });
 
     d3.selectAll(".circle")
         .on("mouseover", function(d){
-            console.log("[subclass=" + d.title + "]");
             d3.selectAll("[subclass=" + d.title + "]")
                 .style("opacity", 1)
-                .style("stroke", "#25D01F");
+                .style("stroke-dashoffset", 0);
             return tooltip.style(prefix + "animation-name", "glow")
                                                       .style(prefix + "animation-iteration-count", "infinite")
                                                       .style(prefix + "animation-timing-function", "ease-in-out")
@@ -246,14 +250,10 @@ d3.csv("../../orbitData.csv", function(rows) {
                                                         + "<BR>Complexity: " + d.period); 
         }).on("mouseout", function(d) {
             d3.selectAll("[subclass=" + d.title + "]")
-              .style("opacity", 0)
-              .style("stroke", "#121212")
-              .transition().duration(1000);
+              .style("opacity", 0);
             return tooltip.style("visibility", "hidden");
         })
-
     });
-
 });
 
 
