@@ -127,8 +127,8 @@ body {
 
 var csvDependencyData;
 
-var r = d3.scale.linear().domain([0, 600]).range([0, 20]);
-var p = d3.scale.linear().domain([0, 10]).range([5, 50]);
+var r = d3.scale.linear().domain([0, 600]).range([2, 20]);
+var p = d3.scale.linear().domain([0, 10]).range([10, 50]);
 
 // Detect the appropriate vendor prefix.
 var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
@@ -184,16 +184,7 @@ d3.csv("../../orbitData.csv", function(rows) {
           .attr("cx", function (d) { return d.origin_x; })
           .attr("cy", function (d) { return d.origin_y; })
           .attr("r", function (d) { return d.number * 20; })
-          .on("mouseover", function(d){ return tooltip.style(prefix + "animation-name", "glow")
-                                                      .style(prefix + "animation-iteration-count", "infinite")
-                                                      .style(prefix + "animation-timing-function", "ease-in-out")
-                                                      .style(prefix + "animation-duration", "2s")
-                                                      .style("visibility", "visible")
-                                                      .style("text-align", "left")
-                                                      .html("Class: " + d.title + "<BR>Package: " + d.package); 
-                                      })
-          .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
-          .on("mouseout", function(){ return tooltip.style("visibility", "hidden"); });
+          .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); });
 
     system.selectAll(".planet")
           .data(csvDynamicData)
@@ -249,7 +240,10 @@ d3.csv("../../orbitData.csv", function(rows) {
                                                       .style(prefix + "animation-duration", "2s")
                                                       .style("visibility", "visible")
                                                       .style("text-align", "left")
-                                                      .html("Class: " + d.title + "<BR>Package: " + d.package); 
+                                                      .html("Class: " + d.title 
+                                                        + "<BR>Package: " + d.package
+                                                        + "<BR>Size: " + d.planet_radius
+                                                        + "<BR>Complexity: " + d.period); 
         }).on("mouseout", function(d) {
             d3.selectAll("[subclass=" + d.title + "]")
               .style("opacity", 0)
