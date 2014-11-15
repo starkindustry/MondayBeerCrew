@@ -125,6 +125,8 @@ body {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
+var csvDependencyData;
+
 // Detect the appropriate vendor prefix.
 var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
     : "-moz-transform" in document.body.style ? "-moz-"
@@ -142,7 +144,7 @@ var tooltip = d3.select("body")
   .style("font-style", "italic");
 
 // Using CSV data to draw orbits and planets
-d3.csv("dynamicData.csv", function(rows) {
+d3.csv("../../orbitData.csv", function(rows) {
 
     // need to turn strings into ints or else program will not run
     rows.forEach(function(d){
@@ -162,7 +164,7 @@ d3.csv("dynamicData.csv", function(rows) {
     var system = d3.select("body")
           .append("div")
           .attr("class", "system")
-          .style("width", "100%")
+          .style("width", "1500px")
           .style("height", "100%");
 
     var orbit_svg = system.append("svg")
@@ -205,12 +207,12 @@ d3.csv("dynamicData.csv", function(rows) {
           .attr("r", function(d) { return d.planet_radius; });
 
     // Using csv data from second file to draw dependency lines
-    d3.csv("dependencyData.csv", function(rows){
+    d3.csv("../../dependencyData.csv", function(rows){
 
-        rows.forEach(function(d){
-            d.callCount = +d.callCount;
-            d.rating = +d.rating;
-        });
+        // rows.forEach(function(d){
+        //     d.callCount = +d.callCount;
+        //     d.rating = +d.rating;
+        // });
 
         csvDependencyData = rows;
 
@@ -227,8 +229,8 @@ d3.csv("dynamicData.csv", function(rows) {
             //Path line - the actual path line drawn
             var path = selection.append("path")
                 .attr("class", "dependencyLine")
-                .attr("subclass", d.class1)
-                .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) });
+                .attr("subclass", d.class_from)
+                .attr("d", function(d) { return createDependencyPath(d.class_from, d.class_to) });
 
         });
 

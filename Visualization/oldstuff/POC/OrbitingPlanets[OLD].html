@@ -183,7 +183,7 @@ var tooltip = d3.select("body")
   .style("font-style", "italic");
 
 // Using CSV data to draw orbits and planets
-d3.csv("dynamicData.csv", function(rows) {
+d3.csv("../mock_data/dynamicData.csv", function(rows) {
 
     // need to turn strings into ints or else program will not run
     rows.forEach(function(d){
@@ -246,7 +246,7 @@ d3.csv("dynamicData.csv", function(rows) {
           .attr("r", function(d) { return d.planet_radius; });
 
     // Using csv data from second file to draw dependency lines
-    d3.csv("dependencyData.csv", function(rows){
+    d3.csv("../mock_data/dependencyData.csv", function(rows){
 
         rows.forEach(function(d){
             d.callCount = +d.callCount;
