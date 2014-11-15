@@ -2,119 +2,94 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class Fuser {
-	
+
 	private static final String ORBIT_DATA_FILENAME = "orbitData.csv";
 	private static final String ORBIT_DATA_COLUMN_HEADERS = "origin_x,origin_y,number,planet_radius,period,package,title";
 	private static final String DEPENDENCY_DATA_FILENAME = "dependencyData.csv";
 	private static final String DEPENDENCY_DATA_COLUMN_HEADERS = "class_from,class_to";
-	
-	private static List<Klass> codeBase1Results = new ArrayList<Klass>();
-	private static List<Klass> codeBase2Results = new ArrayList<Klass>();
-	
+
+	private static String sourceMonitorResultPath;
+	private static String depFinderResultPath;
+	private static List<Klass> results = new ArrayList<Klass>();
+//	private static List<Klass> codeBase2Results = new ArrayList<Klass>();
+
 	private static List<Package> packages;
 	private static List<VisualizationRow> visRows;
 
 	public static void main(String[] args) {
+		// Two args have to be passed to the jar. 
+		// The first should be the path for the SourceMonitor result CSV for the code base. 
+		// The second should be the path for the Dependency Finder XML for the code base.
+		// e.g. "Result XMLs/SMVntfulDetails.csv" "Result XMLs/DepFinderVntfulResults.xml" for Vntful
+		// e.g. "Result XMLs/SMPetFinderDetails.csv" "Result XMLs/DepFinderPetResults.xml" for Petfinder
+		
+		if (args.length == 2) {
+			sourceMonitorResultPath = args[0];
+			depFinderResultPath = args[1];
 
-		CSVParserSM csvReader = new CSVParserSM();
-		Map<String, String> linesOfCodeMap = csvReader.mapSmCSV("Result XMLs/SMVntfulDetails.csv", 4);
-		Map<String, String> complexityMap = csvReader.mapSmCSV("Result XMLs/SMVntfulDetails.csv", 14);
+			CSVParserSM csvReader = new CSVParserSM();
+			//			Map<String, String> linesOfCodeMap = csvReader.mapSmCSV("Result XMLs/SMVntfulDetails.csv", 4);
+			Map<String, String> linesOfCodeMap = csvReader.mapSmCSV(sourceMonitorResultPath, 4);
 
-		XMLParser xmlReader = new XMLParser("Result XMLs/DepFinderVntfulResults.xml");
-		Map<String, Klass> depMap = xmlReader.getClassList();
+			//			Map<String, String> complexityMap = csvReader.mapSmCSV("Result XMLs/SMVntfulDetails.csv", 14);
+			Map<String, String> complexityMap = csvReader.mapSmCSV(sourceMonitorResultPath, 14);
 
-		Set<String> codeBase1SM = linesOfCodeMap.keySet();
-		Set<String> codeBase1DF = depMap.keySet();
-		List<String> fullNameList = new ArrayList<String>();
-		for (String s : codeBase1SM){
-			if (codeBase1DF.contains(s)){
-				fullNameList.add(depMap.get(s).getFullName());
+			//			XMLParser xmlReader = new XMLParser("Result XMLs/DepFinderVntfulResults.xml");
+			XMLParser xmlReader = new XMLParser(depFinderResultPath);
+
+			Map<String, Klass> depMap = xmlReader.getClassList();
+
+			Set<String> sourceMonitorClassList = linesOfCodeMap.keySet();
+			Set<String> depFinderClassList = depMap.keySet();
+			List<String> fullNameList = new ArrayList<String>();
+			for (String s : sourceMonitorClassList){
+				if (depFinderClassList.contains(s)){
+					fullNameList.add(depMap.get(s).getFullName());
+				}
 			}
-		}
 
-		for (String s : codeBase1SM) {
-			if (codeBase1DF.contains(s)){
-				Klass aKlass = new Klass(s);
-				aKlass.setFullName(depMap.get(s).getFullName());
-				aKlass.setLinesOfCode(linesOfCodeMap.get(s));
-				aKlass.setComplexityScore(complexityMap.get(s));
-				aKlass.setPackageName(depMap.get(s).getPackageName());
-				aKlass.setDependencies(depMap.get(s).getOutDependencies());
-				codeBase1Results.add(aKlass);
+			for (String s : sourceMonitorClassList) {
+				if (depFinderClassList.contains(s)){
+					Klass aKlass = new Klass(s);
+					aKlass.setFullName(depMap.get(s).getFullName());
+					aKlass.setLinesOfCode(linesOfCodeMap.get(s));
+					aKlass.setComplexityScore(complexityMap.get(s));
+					aKlass.setPackageName(depMap.get(s).getPackageName());
+					aKlass.setDependencies(depMap.get(s).getOutDependencies());
+					results.add(aKlass);
+				}
 			}
-		}
-		
-		// Parse code base results into Package objects
-		packages = PackageBuilder.buildPackages(codeBase1Results);
-		calculatePackageCoords();
-		
-		for (Klass c : codeBase1Results) {
-			List<String> deps = c.getOutDependencies(); 
-			if (deps.retainAll(fullNameList)) {
-				c.setDependencies(deps);
-			}
-		}
-		
-		// Generates CSV files
-		generateOrbitalCSV(visRows);
-		generateDependencyCSV(visRows);
-		
-//		System.out.println("Code base 1 results: ");
-//		printClasses(codeBase1Results);
-		
-		// ===============================================================================================
-		
-		
-		CSVParserSM csvReader2 = new CSVParserSM();
-		Map<String, String> linesOfCodeMap2 = csvReader2.mapSmCSV("Result XMLs/SMPetFinderDetails.csv", 4);
-		Map<String, String> complexityMap2 = csvReader2.mapSmCSV("Result XMLs/SMPetFinderDetails.csv", 14);
 
-		XMLParser xmlReader2 = new XMLParser("Result XMLs/DepFinderPetResults.xml");
-		Map<String, Klass> depMap2 = xmlReader2.getClassList();
+			// Parse code base results into Package objects
+			packages = PackageBuilder.buildPackages(results);
+			calculatePackageCoords();
 
-		Set<String> codeBase2SM = linesOfCodeMap2.keySet();
-		Set<String> codeBase2DF = depMap2.keySet();
-		List<String> fullNameList2 = new ArrayList<String>();
-		for (String s : codeBase2SM){
-			if (codeBase2DF.contains(s)){
-				fullNameList2.add(depMap2.get(s).getFullName());
+			for (Klass c : results) {
+				List<String> deps = c.getOutDependencies(); 
+				if (deps.retainAll(fullNameList)) {
+					c.setDependencies(deps);
+				}
 			}
-		}
 
-		for (String s : codeBase2SM) {
-			if (codeBase2DF.contains(s)){
-				Klass aKlass = new Klass(s);
-				aKlass.setFullName(depMap2.get(s).getFullName());
-				aKlass.setLinesOfCode(linesOfCodeMap2.get(s));
-				aKlass.setComplexityScore(complexityMap2.get(s));
-				aKlass.setPackageName(depMap2.get(s).getPackageName());
-				aKlass.setDependencies(depMap2.get(s).getOutDependencies());
-				codeBase2Results.add(aKlass);
-			}
-		}
-		
-		for (Klass c : codeBase2Results) {
-			List<String> deps = c.getOutDependencies(); 
-			if (deps.retainAll(fullNameList2)) {
-				c.setDependencies(deps);
-			}
-		}
-		
-		
-//		System.out.println("\nCode base 2 results: ");
-//		printClasses(codeBase2Results);
+			// Generates CSV files
+			generateOrbitalCSV(visRows);
+			generateDependencyCSV(visRows);
 
+//			printClasses(results);
+
+		} else {
+			System.out.println("Incorrect number of arguments passed");
+		}
 	}
 
-	
+
 	//------------HELPER FUNCTIONS -------------
-	
+
 	/**
 	 * Populates a list of VisualizationRows to reflect package coordinates
 	 * on screen.
@@ -129,7 +104,7 @@ public class Fuser {
 		try {
 			File file = new File(ORBIT_DATA_FILENAME);
 			FileWriter writer = new FileWriter(file);
-			
+
 			writer.append(ORBIT_DATA_COLUMN_HEADERS + "\n"); 
 			int i = 0;
 			int j = 1;
@@ -155,14 +130,14 @@ public class Fuser {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	private static void generateDependencyCSV(List<VisualizationRow> rows) {
 		try {
 			File file = new File(DEPENDENCY_DATA_FILENAME);
 			FileWriter writer = new FileWriter(file);
-			
+
 			writer.append(DEPENDENCY_DATA_COLUMN_HEADERS + "\n"); 
 			for (VisualizationRow vr : visRows) {
 				for (Package p : vr.getPackages()) {
@@ -195,7 +170,7 @@ public class Fuser {
 			System.out.println("--------------------------------");
 		}	
 	}
-	
+
 	public static void printPackages(List<Package> packages) {
 		// For DEBUG: Print out the created Package objects
 		for (Package p : packages) {
@@ -207,7 +182,7 @@ public class Fuser {
 			}
 		}
 	}
-	
+
 	public static void printOrbitData() {
 		// Prints our beautiful .csv data
 		int i = 0;
@@ -230,7 +205,7 @@ public class Fuser {
 			i = 0;
 		}
 	}
-	
-	
+
+
 
 }
