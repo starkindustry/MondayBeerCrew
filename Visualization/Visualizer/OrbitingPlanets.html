@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  background: #222;
+  position: relative;
+  text-align: center;
+}
+
+.system {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.circle {
+  fill: #222;
+  stroke: #ccc;
+  stroke-dasharray: 1, 3;
+}
+
+.circle:hover {
+  stroke: #FF0000;
+  stroke-dasharray: none;
+  stroke-width: 1px;
+  -moz-animation-name: glowin;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-duration: .5s;
+  -webkit-animation-name: glowin;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-duration: .5s;
+  animation-name: glowin;
+  animation-timing-function: ease-in-out;
+  animation-duration: .5s;
+}
+
+.dependencyLine {
+  fill: none;
+  stroke: #121212;
+  opacity: 0;
+}
+
+.dependencyLine:hover {
+  stroke: #25D01F;
+  -moz-animation-name: glowin;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-duration: .5s;
+  -webkit-animation-name: glowin;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-duration: .5s;
+  animation-name: glowin;
+  animation-timing-function: ease-in-out;
+  animation-duration: .5s;
+}
+
+.dependencyPath {
+  fill:none;
+  opacity: 0;
+  stroke: #000000;
+  stroke-width: 5px;
+}
+  
+.planet {
+  position: absolute;
+  -moz-animation-name: rotate;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-name: rotate;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.planet circle {
+  fill: url(#planet-gradient);
+}
+
+@-moz-keyframes rotate {
+  from { -moz-transform: rotateZ(0deg); }
+  to { -moz-transform: rotateZ(-360deg); }
+}
+
+@-webkit-keyframes rotate {
+  from { -webkit-transform: rotateZ(0deg); }
+  to { -webkit-transform: rotateZ(-360deg); }
+}
+
+@keyframes rotate {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(-360deg); }
+}
+
+@-moz-keyframes glowin { 
+  0%   { opacity: 0.1; }
+  100% { opacity: 1;   }
+}
+
+@-webkit-keyframes glowin { 
+  0%   { opacity: 0.1; }
+  100% { opacity: 1;   }
+}
+
+@keyframes glowin { 
+  0%   { opacity: 0.1; }
+  100% { opacity: 1;   }
+}
+
+@-webkit-keyframes glow {
+  0%,100% { text-shadow:0 0 10px #000;  }
+  50%     { text-shadow:0 0 10px #fff; }
+}
+
+</style>
+<svg style="position:absolute;width:0;height:0;">
+  <defs>
+    <radialGradient id="planet-gradient" gradientUnits="objectBoundingBox" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#aaa" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#777" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+</svg>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+// Detect the appropriate vendor prefix.
+var prefix = "-webkit-transform" in document.body.style ? "-webkit-"
+    : "-moz-transform" in document.body.style ? "-moz-"
+    : "";
+
+var tooltip = d3.select("body")
+  .append("div")
+  .attr("class", "tooltip")
+  .style("position", "absolute")
+  .style("z-index", "10")
+  .style("visibility", "hidden")
+  .style("color", "white")
+  .style("font-family", "monaco,Consolas,\"Lucida Console\",monospace")
+  .style("font-size", "13px")
+  .style("font-style", "italic");
+
+// Using CSV data to draw orbits and planets
+d3.csv("dynamicData.csv", function(rows) {
+
+    // need to turn strings into ints or else program will not run
+    rows.forEach(function(d){
+        d.origin_x = +d.origin_x;
+        d.origin_y = +d.origin_y;
+        d.number = +d.number;
+        d.planet_radius = +d.planet_radius;
+        d.period = +d.period;
+    });
+
+    var csvDynamicData = rows;
+    // Sort data by system name and period
+    csvDynamicData.sort(function(a, b) {
+      return b.number - a.number;
+    });
+
+    var system = d3.select("body")
+          .append("div")
+          .attr("class", "system")
+          .style("width", "100%")
+          .style("height", "100%");
+
+    var orbit_svg = system.append("svg")
+          .attr("class", "orbit")
+          .attr("width", function(d) { return "100%"; })
+          .attr("height", function(d) { return "100%"; });
+
+    orbit_svg.append("g")
+          .selectAll("circle")
+          .data(csvDynamicData)
+          .enter().append("circle")
+          .attr("class", "circle")
+          .attr("id", function(d) { return d.title; })
+          .attr("cx", function (d) { return d.origin_x; })
+          .attr("cy", function (d) { return d.origin_y; })
+          .attr("r", function (d) { return d.number * 20; })
+          .on("mouseover", function(d){ return tooltip.style(prefix + "animation-name", "glow")
+                                                      .style(prefix + "animation-iteration-count", "infinite")
+                                                      .style(prefix + "animation-timing-function", "ease-in-out")
+                                                      .style(prefix + "animation-duration", "2s")
+                                                      .style("visibility", "visible")
+                                                      .style("text-align", "left")
+                                                      .html("Class: " + d.title + "<BR>Package: " + d.package); 
+                                      })
+          .on("mousemove", function(){ return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px"); })
+          .on("mouseout", function(){ return tooltip.style("visibility", "hidden"); });
+
+    system.selectAll(".planet")
+          .data(csvDynamicData)
+        .enter().append("svg")
+          .attr("class", "planet")
+          .attr("width", function(d) { return d.planet_radius * 2; })
+          .attr("height", function(d) { return d.planet_radius * 2; })
+          .style("top", function(d) { return polarToCartesianY(d.origin_y, d.number * 20, 225) - d.planet_radius; })
+          .style("left", function(d) { return polarToCartesianX(d.origin_x, d.number * 20, 225) - d.planet_radius; })
+          .style(prefix + "animation-duration", function(d) { return d.period + "s"; }) // this governs how fast the planets orbit
+          .style(prefix + "transform-origin", function(d) { return (d.origin_y + d.planet_radius - polarToCartesianY(d.origin_y, d.number * 20, 225)) + "px " + (d.origin_x + d.planet_radius - polarToCartesianX(d.origin_x, d.number * 20, 225)) + "px"; })
+        .append("circle")
+          .attr("transform", function(d) { return "translate(" + d.planet_radius + "," + d.planet_radius + ")"; })
+          .attr("r", function(d) { return d.planet_radius; });
+
+    // Using csv data from second file to draw dependency lines
+    d3.csv("dependencyData.csv", function(rows){
+
+        rows.forEach(function(d){
+            d.callCount = +d.callCount;
+            d.rating = +d.rating;
+        });
+
+        csvDependencyData = rows;
+
+        //a group to hold each path line and its mouseover area
+        var path_group = d3.select(".orbit").selectAll(".path")
+              .data(csvDependencyData)
+              .enter()
+              .append("g");
+
+        //Build a path using the data from the individual orbits; this is dynamic, so we can build them from the ID
+        path_group.each(function(d) {
+            selection = d3.select(this);
+            
+            //Path line - the actual path line drawn
+            var path = selection.append("path")
+                .attr("class", "dependencyLine")
+                .attr("subclass", d.class1)
+                .attr("d", function(d) { return createDependencyPath(d.class1, d.class2) });
+
+        });
+
+    d3.selectAll(".circle")
+        .on("mouseover", function(d){
+            console.log("[subclass=" + d.title + "]");
+            d3.selectAll("[subclass=" + d.title + "]")
+                .style("opacity", 0.9)
+                .style("stroke", "green");
+            return tooltip.style(prefix + "animation-name", "glow")
+                                                      .style(prefix + "animation-iteration-count", "infinite")
+                                                      .style(prefix + "animation-timing-function", "ease-in-out")
+                                                      .style(prefix + "animation-duration", "2s")
+                                                      .style("visibility", "visible")
+                                                      .style("text-align", "left")
+                                                      .html("Class: " + d.title + "<BR>Package: " + d.package); 
+        }).on("mouseout", function(d) {
+            d3.selectAll("[subclass=" + d.title + "]")
+              .style("opacity", 0)
+              .style("stroke", "#121212")
+              .transition().duration(1000);
+            return tooltip.style("visibility", "hidden");
+        })
+
+    });
+
+});
+
+
+
+// Given two elements, builds a dependency path between them.
+function createDependencyPath(elementA, elementB) {
+  return "M" + getElementXCoordinate(elementA) + "," + (getElementYCoordinate(elementA) - getElementRadius(elementA)) + " Q" + (((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 2) + 50) + "," + ((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 16) + " " + getElementXCoordinate(elementB) + "," + (getElementYCoordinate(elementB) - getElementRadius(elementB));
+}
+
+// Converts a polar Y coordinate location to a cartesian point.
+function polarToCartesianY(centre_y, radius, degreeAngle) {
+  var radianAngle = degreeAngle * Math.PI / 180.0;
+  var y = centre_y + radius * Math.sin(radianAngle);
+  return y
+};
+
+// Converts a polar X coordinate location to a cartesian point.
+function polarToCartesianX(centre_x, radius, degreeAngle) {
+  var radianAngle = degreeAngle * Math.PI / 180.0;
+  var x = centre_x + radius * Math.cos(radianAngle);
+  return x
+};
+
+// Return the origin X coordinate for the specified DOM element.
+function getElementXCoordinate(element) {
+  var elem = document.getElementById(element);
+  return elem.cx.baseVal.value
+}
+
+// Returns the origin Y coordinate for the specified DOM element.
+function getElementYCoordinate(element) {
+  var elem = document.getElementById(element);
+  return elem.cy.baseVal.value
+}
+
+// Returns the radius for the specified circle element.
+function getElementRadius(element) {
+  var elem = document.getElementById(element);
+  return elem.r.baseVal.value;
+}
+
+
+</script>
