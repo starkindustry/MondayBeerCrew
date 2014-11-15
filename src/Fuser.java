@@ -142,7 +142,7 @@ public class Fuser {
 								+ k.getLinesOfCode() + "," 
 								+ k.getComplexityScore() + "," 
 								+ k.getPackageName() + "," 
-								+ k.getName() + "\n");
+								+ k.getFullName() + "\n");
 						j++;
 					}
 					j = 0;
