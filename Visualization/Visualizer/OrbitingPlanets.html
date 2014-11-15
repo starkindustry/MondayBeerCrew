@@ -229,6 +229,7 @@ d3.csv("../../orbitData.csv", function(rows) {
                 .style("stroke", "#25D01F")
                 .style("stroke-dasharray", d.totalLength + " " + d.totalLength)
                 .style("stroke-dashoffset", d.totalLength)
+                .each(function() { this.getBoundingClientRect(); })
                 .style(prefix + "transition", "stroke-dashoffset 2s ease-in-out");
 
         });
@@ -250,7 +251,7 @@ d3.csv("../../orbitData.csv", function(rows) {
                                                         + "<BR>Complexity: " + d.period); 
         }).on("mouseout", function(d) {
             d3.selectAll("[subclass=" + d.title + "]")
-              .style("opacity", 0);
+              .style("stroke-dashoffset", function() { return this.getTotalLength(); });
             return tooltip.style("visibility", "hidden");
         })
     });
