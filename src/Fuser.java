@@ -16,7 +16,6 @@ public class Fuser {
 	private static String sourceMonitorResultPath;
 	private static String depFinderResultPath;
 	private static List<Klass> results = new ArrayList<Klass>();
-//	private static List<Klass> codeBase2Results = new ArrayList<Klass>();
 
 	private static List<Package> packages;
 	private static List<VisualizationRow> visRows;
