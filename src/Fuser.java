@@ -142,7 +142,7 @@ public class Fuser {
 								+ k.getLinesOfCode() + "," 
 								+ k.getComplexityScore() + "," 
 								+ k.getPackageName() + "," 
-								+ k.getFullName() + "\n");
+								+ returnClassNameWithoutExtension(k.getName()) + "\n");
 						j++;
 					}
 					j = 0;
@@ -168,7 +168,7 @@ public class Fuser {
 				for (Package p : vr.getPackages()) {
 					for (Klass k : p.getKlasses()) {
 						for (String dep : k.getOutDependencies()) {
-							writer.append(k.getFullName() + "," + dep + "\n");
+							writer.append(returnClassNameWithoutExtension(k.getName()) + "," + dep.substring(dep.lastIndexOf(".") + 1) + "\n");
 						}
 					}
 				}
@@ -178,6 +178,10 @@ public class Fuser {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private static String returnClassNameWithoutExtension(String s) {
+		return s.replaceFirst("[.][^.]+$", "");
 	}
 
 	public static void printClasses(List<Klass> classes) {
@@ -191,7 +195,7 @@ public class Fuser {
 			System.out.println("Dependencies: ");
 			List<String> deps = classes.get(i).getOutDependencies();
 			for (String s : deps)
-				System.out.println(s);
+				System.out.println(s.substring(s.lastIndexOf(".") + 1));
 			System.out.println("--------------------------------");
 		}	
 	}
