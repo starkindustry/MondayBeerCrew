@@ -6,7 +6,7 @@ public class VisualizationRowBuilder {
 
 	private static final int SVG_BACKGROUND_WIDTH = 1500;
 	private static final int ORBIT_PADDING = 15;
-	private static final int SVG_PADDING = 25;
+	private static final int SVG_PADDING = 100;
 	private static final int PACKAGES_PER_ROW = 3;
 	
 	public VisualizationRowBuilder () {}	
