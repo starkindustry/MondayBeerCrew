@@ -20,6 +20,26 @@ body {
   stroke-dasharray: 1, 3;
 }
 
+.toggleButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:arial;
+  font-size:14px;
+  padding:7px 19px;
+  text-decoration:none;
+  text-shadow:2px 2px 3px #810e05;
+}
+.toggleButton:hover {
+  background-color:#f24437;
+}
+.toggleButton:active {
+  position:absolute;
+  top:1px;
+}
+
 .circle:hover {
   stroke: #FF0000;
   stroke-dasharray: none;
@@ -129,6 +149,9 @@ body {
   </defs>
 </svg>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+
+<a href="#" class="toggleButton">Toggle Dependencies</a>
+
 <script>
 
 var csvDependencyData;
@@ -256,6 +279,24 @@ d3.csv("../../orbitData.csv", function(rows) {
               .style("stroke-dashoffset", function() { return this.getTotalLength(); });
             return tooltip.style("visibility", "hidden");
         })
+
+    // Build a dependency toggle button
+    var toggle = false;
+
+    d3.select(".toggleButton")
+      .on("click", function(d, i) {
+        if (!toggle) {
+          d3.selectAll(".dependencyLine")
+            .style("opacity", 1)
+            .style("stroke-dashoffset", 0);
+          toggle = true;
+        } else {
+          d3.selectAll(".dependencyLine")
+            .style("opacity", 1)
+            .style("stroke-dashoffset", function() { return this.getTotalLength(); });
+          toggle = false;
+        }
+      })
     });
 });
 
