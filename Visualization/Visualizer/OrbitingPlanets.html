@@ -263,11 +263,11 @@ d3.csv("../../orbitData.csv", function(rows) {
 
 // Given two elements, builds a dependency path between them.
 function createDependencyPath(elementA, elementB) {
-  var a_y = getElementYCoordinate(elementA) - getElementRadius(elementA);
-  var b_y = getElementYCoordinate(elementB) - getElementRadius(elementB);
   var a_x = getElementXCoordinate(elementA);
   var b_x = getElementXCoordinate(elementB);
-  var curve_x = a_x + 50;
+  var a_y = getElementYCoordinate(elementA) - getElementRadius(elementA);
+  var b_y = getElementYCoordinate(elementB) - getElementRadius(elementB);
+  var curve_x = a_x + 100;
   var curve_y = (a_y + b_y) / 2;
   return "M" + a_x + "," + a_y + " Q" + curve_x + "," + curve_y + " " + b_x + "," + b_y;
 }
