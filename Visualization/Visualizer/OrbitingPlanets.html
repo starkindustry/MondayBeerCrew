@@ -272,7 +272,7 @@ d3.csv("../../orbitData.csv", function(rows) {
                                                       .style("text-align", "left")
                                                       .html("Class: " + d.title 
                                                         + "<BR>Package: " + d.package
-                                                        + "<BR>Size: " + d.planet_radius
+                                                        + "<BR>Lines of code: " + d.planet_radius
                                                         + "<BR>Complexity: " + d.period); 
         }).on("mouseout", function(d) {
             d3.selectAll("[subclass=" + d.title + "]")
