@@ -74,10 +74,6 @@ body {
   animation-timing-function: linear;
 }
 
-.planet circle {
-  fill: url(#planet-gradient);
-}
-
 @-moz-keyframes rotate {
   from { -moz-transform: rotateZ(0deg); }
   to { -moz-transform: rotateZ(-360deg); }
@@ -119,6 +115,16 @@ body {
     <radialGradient id="planet-gradient" gradientUnits="objectBoundingBox" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#aaa" stop-opacity="1"/>
       <stop offset="100%" stop-color="#777" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+</svg>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<svg style="position:absolute;width:0;height:0;">
+  <defs>
+    <radialGradient id="planet-gradient-highlight" gradientUnits="objectBoundingBox" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFF9B" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#878700" stop-opacity="1"/>
     </radialGradient>
   </defs>
 </svg>
@@ -198,15 +204,11 @@ d3.csv("../../orbitData.csv", function(rows) {
           .style(prefix + "transform-origin", function(d) { return (d.origin_y + r(d.planet_radius) - polarToCartesianY(d.origin_y, d.number * 20, 225)) + "px " + (d.origin_x + r(d.planet_radius) - polarToCartesianX(d.origin_x, d.number * 20, 225)) + "px"; })
         .append("circle")
           .attr("transform", function(d) { return "translate(" + r(d.planet_radius) + "," + r(d.planet_radius) + ")"; })
-          .attr("r", function(d) { return r(d.planet_radius); });
+          .attr("r", function(d) { return r(d.planet_radius); })
+          .attr("fill", "url(#planet-gradient)");
 
     // Using csv data from second file to draw dependency lines
     d3.csv("../../dependencyData.csv", function(rows){
-
-        // rows.forEach(function(d){
-        //     d.callCount = +d.callCount;
-        //     d.rating = +d.rating;
-        // });
 
         csvDependencyData = rows;
 
@@ -227,18 +229,18 @@ d3.csv("../../orbitData.csv", function(rows) {
                 .attr("d", function(d) { return createDependencyPath(d.class_from, d.class_to) })
                 .each(function(d) { d.totalLength = this.getTotalLength(); })
                 .style("stroke", "#25D01F")
-                .style("stroke-dasharray", d.totalLength + " " + d.totalLength)
-                .style("stroke-dashoffset", d.totalLength)
-                .each(function() { this.getBoundingClientRect(); })
+                .style("stroke-dasharray", function() { return this.getTotalLength() + " " + this.getTotalLength(); })
+                .style("stroke-dashoffset", function() { return this.getTotalLength(); })
                 .style(prefix + "transition", "stroke-dashoffset 2s ease-in-out");
 
         });
 
     d3.selectAll(".circle")
-        .on("mouseover", function(d){
+        .on("mouseover", function(d) {
             d3.selectAll("[subclass=" + d.title + "]")
                 .style("opacity", 1)
                 .style("stroke-dashoffset", 0);
+            
             return tooltip.style(prefix + "animation-name", "glow")
                                                       .style(prefix + "animation-iteration-count", "infinite")
                                                       .style(prefix + "animation-timing-function", "ease-in-out")
@@ -261,7 +263,13 @@ d3.csv("../../orbitData.csv", function(rows) {
 
 // Given two elements, builds a dependency path between them.
 function createDependencyPath(elementA, elementB) {
-  return "M" + getElementXCoordinate(elementA) + "," + (getElementYCoordinate(elementA) - getElementRadius(elementA)) + " Q" + (((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 2) + 250) + "," + ((getElementXCoordinate(elementA) + getElementXCoordinate(elementB)) / 16) + " " + getElementXCoordinate(elementB) + "," + (getElementYCoordinate(elementB) - getElementRadius(elementB));
+  var a_y = getElementYCoordinate(elementA) - getElementRadius(elementA);
+  var b_y = getElementYCoordinate(elementB) - getElementRadius(elementB);
+  var a_x = getElementXCoordinate(elementA);
+  var b_x = getElementXCoordinate(elementB);
+  var curve_x = a_x + 50;
+  var curve_y = (a_y + b_y) / 2;
+  return "M" + a_x + "," + a_y + " Q" + curve_x + "," + curve_y + " " + b_x + "," + b_y;
 }
 
 // Converts a polar Y coordinate location to a cartesian point.
