@@ -12,7 +12,6 @@ import org.junit.Test;
 public class VisualizationRowBuilderTest {
 	
 	private VisualizationRowBuilder visRowBuilder;
-//	private VisualizationRowBuilderTestHelper vrbTestHelper;
 	private List<VisualizationRow> visRows;
 	private List<Package> lopOne, lopThree;
 	private List<Klass> lokOne, lokFive, lokTen;
@@ -20,8 +19,6 @@ public class VisualizationRowBuilderTest {
 	@Before
 	public void setUp() throws Exception {
 		visRowBuilder = new VisualizationRowBuilder();
-//		vrbTestHelper = new VisualizationRowBuilderTestHelper();
-//		vrbTestHelper.initializeKlasses(lokOne, lokFive, lokTen);
 		lopOne = new ArrayList<Package>();
 		lopThree = new ArrayList<Package>();
 		lokOne = new ArrayList<Klass>();
