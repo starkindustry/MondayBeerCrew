@@ -12,7 +12,7 @@ import org.junit.Test;
 public class VisualizationRowBuilderTest {
 	
 	private VisualizationRowBuilder visRowBuilder;
-	private VisualizationRowBuilderTestHelper vrbTestHelper;
+//	private VisualizationRowBuilderTestHelper vrbTestHelper;
 	private List<VisualizationRow> visRows;
 	private List<Package> lopOne, lopThree;
 	private List<Klass> lokOne, lokFive, lokTen;
