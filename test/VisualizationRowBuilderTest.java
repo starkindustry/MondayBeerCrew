@@ -10,74 +10,108 @@ import org.junit.Test;
 
 
 public class VisualizationRowBuilderTest {
-
+	
 	private VisualizationRowBuilder visRowBuilder;
+	private VisualizationRowBuilderTestHelper vrbTestHelper;
 	private List<VisualizationRow> visRows;
-	private List<Package> lopSmall, lopBig;
-	private List<Klass> lokSmall, lokBig;
+	private List<Package> lopOne, lopThree;
+	private List<Klass> lokOne, lokFive, lokTen;
 	
 	@Before
 	public void setUp() throws Exception {
 		visRowBuilder = new VisualizationRowBuilder();
-		lopSmall = new ArrayList<Package>();
-		lokSmall = new ArrayList<Klass>();
-		lokBig = new ArrayList<Klass>();
-		populateKlasses(lokSmall, lokBig);
-		populatePackages(lopSmall);
+//		vrbTestHelper = new VisualizationRowBuilderTestHelper();
+//		vrbTestHelper.initializeKlasses(lokOne, lokFive, lokTen);
+		lopOne = new ArrayList<Package>();
+		lopThree = new ArrayList<Package>();
+		lokOne = new ArrayList<Klass>();
+		lokFive = new ArrayList<Klass>();
+		lokTen = new ArrayList<Klass>();
+		populateKlasses(lokOne, lokFive, lokTen);
+		populatePackages();
 	}
 	
-	private void populateKlasses(List<Klass> lok1, List<Klass> lok2) {
-		lok1.add(new Klass("A"));
-		lok1.add(new Klass("B"));
-		lok1.add(new Klass("C"));
-		lok1.add(new Klass("D"));
-		lok1.add(new Klass("E"));
-
-		lok2.add(new Klass("A"));
-		lok2.add(new Klass("B"));
-		lok2.add(new Klass("C"));
-		lok2.add(new Klass("D"));
-		lok2.add(new Klass("E"));
-		lok2.add(new Klass("F"));
-		lok2.add(new Klass("G"));
-		lok2.add(new Klass("H"));
-		lok2.add(new Klass("I"));
-		lok2.add(new Klass("J"));
-		
-	}
-
-	private void populatePackages(List<Package> packages) {
-		Package package1 = new Package("package1");
-		Package package2 = new Package("package2");
-		for (int i = 0; i < lokSmall.size(); i++) {
-			package1.addKlass(lokSmall.get(i));
-		}
-		
-		for (int i = 0; i < lokBig.size(); i++) {
-			package2.addKlass(lokBig.get(i));
-		}	
-		
-		lopSmall.add(package1);
-		lopSmall.add(package2);
-	}
-	
-//	private void populateEachVisRow(List<VisualizationRow> visRows) {
-//		VisualizationRow vRow1 = new VisualizationRow();
-//		for (int i = 0; i < lopSmall.size(); i++) {
-//			vRow1.addPackage(lopSmall.get(i));
-//		}
-//		
-//	}
-
-
 	@After
 	public void tearDown() throws Exception {
+		lopOne.clear();
+		lopThree.clear();
+		lokOne.clear();
+		lokFive.clear();
+		lokTen.clear();
+	}
+	
+	private void populateKlasses(List<Klass> lokOne, List<Klass> lokFive, List<Klass> lokTen) {
+		lokOne.add(new Klass("A"));
+		
+		lokFive.add(new Klass("A"));
+		lokFive.add(new Klass("B"));
+		lokFive.add(new Klass("C"));
+		lokFive.add(new Klass("D"));
+		lokFive.add(new Klass("E"));
+
+		lokTen.add(new Klass("A"));
+		lokTen.add(new Klass("B"));
+		lokTen.add(new Klass("C"));
+		lokTen.add(new Klass("D"));
+		lokTen.add(new Klass("E"));
+		lokTen.add(new Klass("F"));
+		lokTen.add(new Klass("G"));
+		lokTen.add(new Klass("H"));
+		lokTen.add(new Klass("I"));
+		lokTen.add(new Klass("J"));
+		
 	}
 
+	private void populatePackages() {
+		Package package1 = new Package("package1");
+		Package package2 = new Package("package2");
+		Package package3 = new Package("package3");
+		
+		package1.addKlass(lokOne.get(0));
+		
+		for (int i = 0; i < lokFive.size(); i++) {
+			package2.addKlass(lokFive.get(i));
+		}
+		
+		for (int i = 0; i < lokTen.size(); i++) {
+			package3.addKlass(lokTen.get(i));
+		}	
+		
+		lopOne.add(package1);
+		
+		lopThree.add(package1);
+		lopThree.add(package2);
+		lopThree.add(package3);
+	}
+
+
 	@Test
-	public void testPopulateVisRows() {
-		visRows = visRowBuilder.populateVisRows(visRows, lopSmall);
+	public void testPopulateVisRowsOnePkg() {
+		visRows = visRowBuilder.populateVisRows(visRows, lopOne);
 		assertEquals(1, visRows.size());
+	}
+	
+	@Test
+	public void testSetYOnePkg() {
+		visRows = visRowBuilder.populateVisRows(visRows, lopOne);
+		visRowBuilder.setYValues(visRows);
+		assertEquals(115, visRows.get(0).getY());
+	}
+	
+	@Test
+	public void testPopulateVisRowsThreePkg() {
+		visRows = visRowBuilder.populateVisRows(visRows, lopThree);
+		assertEquals(1, visRows.size());
+	}
+	
+	@Test
+	public void testSetYThreePkg() {
+		visRows = visRowBuilder.populateVisRows(visRows, lopThree);
+		visRowBuilder.setYValues(visRows);
+		for (int i = 0; i < visRows.size(); i ++) {
+			assertEquals(250, visRows.get(i).getY());
+		}
+		
 	}
 
 }
