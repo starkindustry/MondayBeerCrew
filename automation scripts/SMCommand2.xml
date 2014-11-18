@@ -2,17 +2,17 @@
 <sourcemonitor_commands>
  
    <write_log>true</write_log>
- 
+	
 	<command>
-	<project_file>C:\410dataOutput\vntful.smp</project_file>
+	<project_file>C:\410dataOutput\petfinder.smp</project_file>
 		<project_language>Java</project_language>
 		<file_extensions>*.java</file_extensions>
-		<source_directory>C:\Users\Allan\git\MondayBeerCrew\CodeBases\Vntful</source_directory>
+		<source_directory>C:\Users\Allan\git\MondayBeerCrew\CodeBases\PetFinder</source_directory>
 		<include_subdirectories>true</include_subdirectories>
 		
-		<checkpoint_name>VFBaseline</checkpoint_name>
+		<checkpoint_name>PFBaseline</checkpoint_name>
 		<export>
-           <export_file>C:\Users\Allan\git\MondayBeerCrew\Result XMLs\SMVntfulDetails.csv</export_file>
+           <export_file>C:\Users\Allan\git\MondayBeerCrew\Result XMLs\SMPetFinderDetails.csv</export_file>
            <export_type>3 (project details as CSV)</export_type>
            <export_option>1 (do not use any of the options set in the Options dialog)</export_option>
 		</export>
