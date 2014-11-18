@@ -4,7 +4,7 @@
 
 <dependencies>
     <package confirmed="yes">
-        <name>test1</name>
+        <name>testPackageName</name>
         <class confirmed="yes">
             <name>Mozzarella</name>
             <outbound type="class" confirmed="yes">ToppingDecorator</outbound>
@@ -107,7 +107,7 @@
         </class>
     </package>
     <package confirmed="no">
-        <name>java.lang</name>
+        <name></name>
         <class confirmed="no">
             <name>java.lang.Object</name>
         </class>
