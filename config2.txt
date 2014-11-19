@@ -1,0 +1,8 @@
+CODEBASE_PATH=C:\Users\Allan\git\MondayBeerCrew\CodeBases\PetFinder\
+DF_OUTPUT="C:\Users\Allan\git\MondayBeerCrew\Result XMLs\DepFinderPetResults.xml"
+SM_PATH=C:\SourceMonitor\SourceMonitor.exe
+SM_CONFIG_PATH="C:\Users\Allan\git\MondayBeerCrew\automation scripts\SMCommand2.xml"
+PROJECT_JAR=C:\Users\Allan\git\MondayBeerCrew\MondayBeerCrew.jar
+JAR_FST_ARG="Result XMLs/SMPetFinderDetails.csv"
+JAR_SND_ARG="Result XMLs/DepFinderPetResults.xml"
+VISUALIZER=file:///C:/Users/Allan/git/MondayBeerCrew/Visualization/Visualizer/OrbitingPlanets.html
