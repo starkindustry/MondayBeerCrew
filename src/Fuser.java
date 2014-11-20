@@ -163,6 +163,7 @@ public class Fuser {
 		System.out.println("--------------------------------");
 		for (int i = 0; i < classes.size(); i++){
 			System.out.println((i+1) + ". " + "\nClass name: " + classes.get(i).getFullName());
+			System.out.println("Full name: " + classes.get(i).getFullName());
 			System.out.println("Package name: " + classes.get(i).getPackageName());
 			System.out.println("Size: " + classes.get(i).getLinesOfCode());
 			System.out.println("Complexity: " + classes.get(i).getComplexityScore());
@@ -209,6 +210,9 @@ public class Fuser {
 		}
 	}
 
+	public static List<Klass> getClassList(){
+		return results;
+	}
 
 
 }
