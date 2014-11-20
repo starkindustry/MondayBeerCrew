@@ -1,8 +1,10 @@
-CODEBASE_PATH=C:\Users\Allan\git\MondayBeerCrew\CodeBases\Vntful\
-DF_OUTPUT="C:\Users\Allan\git\MondayBeerCrew\Result XMLs\DepFinderVntfulResults.xml"
+CODEBASE_PATH=CodeBases\PetFinder\
+DF_OUTPUT="Result XMLs\DepFinderPetResults.xml"
 SM_PATH=C:\SourceMonitor\SourceMonitor.exe
-SM_CONFIG_PATH="C:\Users\Allan\git\MondayBeerCrew\automation scripts\SMCommand.xml"
-PROJECT_JAR=C:\Users\Allan\git\MondayBeerCrew\MondayBeerCrew.jar
-JAR_FST_ARG="Result XMLs/SMVntfulDetails.csv"
-JAR_SND_ARG="Result XMLs/DepFinderVntfulResults.xml"
-VISUALIZER=file:///C:/Users/Allan/git/MondayBeerCrew/Visualization/Visualizer/OrbitingPlanets.html
+SM_CONFIG_PATH="automation scripts\SMCommand2.xml"
+PROJECT_JAR=MondayBeerCrew.jar
+JAVA_HOME=C:\Program Files (x86)\Java\jdk1.7.0_60\bin
+DEPFINDER_PATH=C:\DependencyFinder-1.2.1-beta4\bin
+JAR_FST_ARG="Result XMLs/SMPetFinderDetails.csv"
+JAR_SND_ARG="Result XMLs/DepFinderPetResults.xml"
+VISUALIZER="Visualization/Visualizer/OrbitingPlanets.html"
