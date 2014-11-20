@@ -12,7 +12,7 @@ tests for the Fuser and tests for the output format required for our visualizer.
 Visualizer:
 ------------
 
-**BEST VIEWED IN CHROME with --allow-file-access-from-files argument**
+**Please view in Chrome with "--allow-file-access-from-files" argument**
 
 For the visualizer, we have mock data to be fed into the html document and can be visually inspected. The data can be located in the Visualization/oldstuff/mock_data folder:
 [mockdata](https://github.com/starkindustry/MondayBeerCrew/tree/master/Visualization/oldstuff/mock_data)
